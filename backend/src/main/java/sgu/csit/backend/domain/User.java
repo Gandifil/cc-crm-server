@@ -1,94 +1,50 @@
 package sgu.csit.backend.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private long id;
 
-    private String email;
-    private String surname;
-    private String name;
-    private String patronymic;
-    private String city;
-    private String street;
-    private String homeNumber;
-    private int apartmentNumber;
+    @Size(min = 4, max = 20)
+    private String username;
 
-    public String getEmail() {
-        return email;
+    @Size(min = 6, max = 32)
+    private String password;
+
+    public User() {
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public User(String username) {
+        this.username = username;
     }
 
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPatronymic() {
-        return patronymic;
-    }
-
-    public void setPatronymic(String patronymic) {
-        this.patronymic = patronymic;
-    }
-
-    public Integer getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public String getCity() {
-        return city;
+    public String getUsername() {
+        return username;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getStreet() {
-        return street;
+    public String getPassword() {
+        return password;
     }
 
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    public String getHomeNumber() {
-        return homeNumber;
-    }
-
-    public void setHomeNumber(String homeNumber) {
-        this.homeNumber = homeNumber;
-    }
-
-    public int getApartmentNumber() {
-        return apartmentNumber;
-    }
-
-    public void setApartmentNumber(int apartmentNumber) {
-        this.apartmentNumber = apartmentNumber;
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
