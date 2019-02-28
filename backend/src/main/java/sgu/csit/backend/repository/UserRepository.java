@@ -1,7 +1,10 @@
 package sgu.csit.backend.repository;
 
-import org.springframework.data.repository.CrudRepository;
-import sgu.csit.backend.web.domain.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import sgu.csit.backend.domain.User;
 
-public interface UserRepository extends CrudRepository<User, Long> {
+@Repository
+public interface UserRepository extends JpaRepository<User, Long> {
+    User findByUsername(String username);
 }
