@@ -1,10 +1,10 @@
-package sgu.csit.backend.controller;
+package sgu.csit.backend.web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import sgu.csit.backend.domain.User;
+import sgu.csit.backend.web.domain.User;
 import sgu.csit.backend.repository.UserRepository;
 
 @RestController

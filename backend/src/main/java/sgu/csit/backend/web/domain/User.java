@@ -1,4 +1,4 @@
-package sgu.csit.backend.domain;
+package sgu.csit.backend.web.domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
