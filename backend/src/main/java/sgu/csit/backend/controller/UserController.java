@@ -1,67 +1,39 @@
 package sgu.csit.backend.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-import sgu.csit.backend.domain.Role;
-import sgu.csit.backend.domain.User;
-import sgu.csit.backend.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+import sgu.csit.backend.auth.JwtTokenUtil;
+import sgu.csit.backend.security.JwtUser;
 
-import java.util.Arrays;
-import java.util.Map;
-import java.util.Set;
-import java.util.stream.Collectors;
+import javax.servlet.http.HttpServletRequest;
 
-@Controller
-@RequestMapping("/user")
-@PreAuthorize("hasAuthority('ADMIN')")
+@RestController
 public class UserController {
-    private final UserRepository userRepository;
+    @Value("${jwt.header}")
+    private String tokenHeader;
+
+    private final JwtTokenUtil jwtTokenUtil;
+
+    private final UserDetailsService userDetailsService;
 
     @Autowired
-    public UserController(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
-
-    @GetMapping
-    public String userList(Model model) {
-        model.addAttribute("users", userRepository.findAll());
-
-        return "userList";
-    }
-
-    @GetMapping("{user}")
-    public String userEditForm(@PathVariable User user, Model model) {
-        model.addAttribute("user", user);
-        model.addAttribute("roles", Role.values());
-
-        return "userEdit";
-    }
-
-    @PostMapping
-    public String userSave(
-            @RequestParam String username,
-            @RequestParam Map<String, String> form,
-            @RequestParam("userId") User user
+    public UserController(
+            JwtTokenUtil jwtTokenUtil,
+            @Qualifier("jwtUserDetailsService") UserDetailsService userDetailsService
     ) {
-        user.setUsername(username);
+        this.jwtTokenUtil = jwtTokenUtil;
+        this.userDetailsService = userDetailsService;
+    }
 
-        Set<String> roles = Arrays.stream(Role.values())
-                .map(Role::name)
-                .collect(Collectors.toSet());
-
-        user.getRoles().clear();
-
-        for (String key : form.keySet()) {
-            if (roles.contains(key)) {
-                user.getRoles().add(Role.valueOf(key));
-            }
-        }
-
-        userRepository.save(user);
-
-        return "redirect:/user";
+    @RequestMapping(value = "user", method = RequestMethod.GET)
+    public JwtUser getAuthenticatedUser(HttpServletRequest request) {
+        String token = request.getHeader(tokenHeader).substring(7);
+        String username = jwtTokenUtil.getUsernameFromToken(token);
+        return (JwtUser)userDetailsService.loadUserByUsername(username);
     }
 }
