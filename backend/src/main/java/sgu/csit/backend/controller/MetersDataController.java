@@ -18,6 +18,7 @@ import sgu.csit.backend.service.MetersDataService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @RestController
 public class MetersDataController {
@@ -40,17 +41,28 @@ public class MetersDataController {
     }
 
     @RequestMapping(value = "/meters/send", method = RequestMethod.POST)
-    public ResponseEntity sendMetersData(@RequestBody MetersData metersData,
-                                         HttpServletRequest httpServletRequest) {
-        metersData.setDate(LocalDateTime.now());
+    public ResponseEntity sendMetersData(@RequestBody MetersData metersData, HttpServletRequest httpServletRequest) {
+        metersData.setStartDate(new Date());
         metersData.setUserId(getCurrentUser(httpServletRequest).getId());
-        metersDataService.addMeterdsData(metersData);
+        metersDataService.addMetersData(metersData);
         return new ResponseEntity(HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/meters", method = RequestMethod.GET)
+    @RequestMapping(value = "/meters/all", method = RequestMethod.GET)
     public ResponseEntity getAllMetersData() {
-        Iterable<MetersData> metersData = metersDataService.getAll(PeriodType.ALL);
+        Iterable<MetersData> metersData = metersDataService.getMetersData(PeriodType.ALL);
+        return new ResponseEntity(metersData, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/meters/month", method = RequestMethod.GET)
+    public ResponseEntity getMetersDataByCurrentMonth() {
+        Iterable<MetersData> metersData = metersDataService.getMetersData(PeriodType.CURRENT_MONTH);
+        return new ResponseEntity(metersData, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/meters/year", method = RequestMethod.GET)
+    public ResponseEntity getMetersDataByCurrentYear() {
+        Iterable<MetersData> metersData = metersDataService.getMetersData(PeriodType.CURRENT_YEAR);
         return new ResponseEntity(metersData, HttpStatus.OK);
     }
 

@@ -6,10 +6,7 @@ import sgu.csit.backend.model.MetersData;
 import sgu.csit.backend.model.PeriodType;
 import sgu.csit.backend.repository.MetersDataRepository;
 
-import java.time.LocalDateTime;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
+import java.util.Calendar;
 
 @Service
 public class MetersDataService {
@@ -21,28 +18,29 @@ public class MetersDataService {
         this.metersDataRepository = metersDataRepository;
     }
 
-    public void addMeterdsData(MetersData metersData) {
+    public void addMetersData(MetersData metersData) {
         metersDataRepository.save(metersData);
     }
 
-    public Iterable<MetersData> getAll(PeriodType periodType) {
-        Iterable<MetersData> metersData = metersDataRepository.findAll();
-//        switch (periodType) {
-//            case CURRENT_MONTH:
-//                metersData = StreamSupport
-//                        .stream(metersData.spliterator(), false)
-//                        .filter(x -> x.getDate().compareTo(LocalDateTime.now().minusMonths(1)) > 0)
-//                        .collect(Collectors.toList());
-//                break;
-//            case CURRENT_YEAR:
-//                metersData = StreamSupport
-//                        .stream(metersData.spliterator(), false)
-//                        .filter(x -> x.getDate().compareTo(LocalDateTime.now().minusYears(1)) > 0)
-//                        .collect(Collectors.toList());
-//                break;
-//            case ALL:
-//                break;
-//        }
+    public Iterable<MetersData> getMetersData(PeriodType periodType) {
+        Iterable<MetersData> metersData;
+        switch (periodType) {
+            case CURRENT_MONTH:
+                Calendar calendar = Calendar.getInstance();
+                calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMinimum((Calendar.DAY_OF_MONTH)));
+                metersData = metersDataRepository.findByStartDateAfter(calendar.getTime());
+                break;
+            case CURRENT_YEAR:
+                calendar = Calendar.getInstance();
+                calendar.set(Calendar.DAY_OF_YEAR, calendar.getActualMinimum((Calendar.DAY_OF_MONTH)));
+                metersData = metersDataRepository.findByStartDateAfter(calendar.getTime());
+                break;
+            case ALL:
+                metersData = metersDataRepository.findAll();
+                break;
+            default:
+                return null;
+        }
         return metersData;
     }
 }

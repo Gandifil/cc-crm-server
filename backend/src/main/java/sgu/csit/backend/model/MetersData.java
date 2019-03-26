@@ -20,8 +20,8 @@ public class MetersData {
     @Column(name = "cold_water")
     private int coldWater;
 
-    @Column(name = "date")
-    private LocalDateTime date;
+    @Column(name = "start_date")
+    private Date startDate;
 
     @Column(name = "user_id")
     private long userId;
@@ -58,12 +58,12 @@ public class MetersData {
         this.coldWater = coldWater;
     }
 
-    public LocalDateTime getDate() {
-        return date;
+    public Date getStartDate() {
+        return startDate;
     }
 
-    public void setDate(LocalDateTime localDateTime) {
-        this.date = localDateTime;
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
     }
 
     public long getUserId() {
