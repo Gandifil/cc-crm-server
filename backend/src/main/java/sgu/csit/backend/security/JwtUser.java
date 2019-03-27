@@ -3,6 +3,7 @@ package sgu.csit.backend.security;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import sgu.csit.backend.model.MetersData;
 
 import java.util.Collection;
 import java.util.Date;
@@ -11,36 +12,37 @@ public class JwtUser implements UserDetails {
 
     private final Long id;
     private final String username;
-    private final String name;
-    private final String surname;
-    private final String patronymic;
+    private final String firstName;
+    private final String lastName;
+    private final String middleName;
     private final String password;
     private final String email;
     private final Collection<? extends GrantedAuthority> authorities;
     private final boolean enabled;
     private final Date lastPasswordResetDate;
+    private final Collection<MetersData> metersData;
 
-    public JwtUser(
-            Long id,
-            String username,
-            String name,
-            String surname,
-            String patronymic,
-            String email,
-            String password, Collection<? extends GrantedAuthority> authorities,
-            boolean enabled,
-            Date lastPasswordResetDate
-    ) {
+    public JwtUser(Long id,
+                   String username,
+                   String firstName,
+                   String lastName,
+                   String middleName,
+                   String email,
+                   String password, Collection<? extends GrantedAuthority> authorities,
+                   boolean enabled,
+                   Date lastPasswordResetDate,
+                   Collection<MetersData> metersData) {
         this.id = id;
         this.username = username;
-        this.name = name;
-        this.surname = surname;
-        this.patronymic = patronymic;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.middleName = middleName;
         this.email = email;
         this.password = password;
         this.authorities = authorities;
         this.enabled = enabled;
         this.lastPasswordResetDate = lastPasswordResetDate;
+        this.metersData = metersData;
     }
 
     @JsonIgnore
@@ -71,18 +73,6 @@ public class JwtUser implements UserDetails {
         return true;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public String getPatronymic() {
-        return patronymic;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -106,5 +96,21 @@ public class JwtUser implements UserDetails {
     @JsonIgnore
     public Date getLastPasswordResetDate() {
         return lastPasswordResetDate;
+    }
+
+    public Collection<MetersData> getMetersData() {
+        return metersData;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getMiddleName() {
+        return middleName;
     }
 }

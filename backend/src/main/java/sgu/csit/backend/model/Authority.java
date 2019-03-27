@@ -2,11 +2,10 @@ package sgu.csit.backend.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
-@Table(name = "authority")
+@Table(name = "authorities")
 public class Authority {
 
     @Id
@@ -18,7 +17,7 @@ public class Authority {
     @Column(name = "name", length = 50)
     @NotBlank
     @Enumerated(EnumType.STRING)
-    private AuthorityName name;
+    private AuthorityType name;
 
     @ManyToMany(mappedBy = "authorities", fetch = FetchType.LAZY)
     private List<User> users;
@@ -31,11 +30,11 @@ public class Authority {
         this.id = id;
     }
 
-    public AuthorityName getName() {
+    public AuthorityType getName() {
         return name;
     }
 
-    public void setName(AuthorityName name) {
+    public void setName(AuthorityType name) {
         this.name = name;
     }
 

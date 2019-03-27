@@ -17,15 +17,15 @@ public final class JwtUserFactory {
         return new JwtUser(
                 user.getId(),
                 user.getUsername(),
-                user.getName(),
-                user.getSurname(),
-                user.getPatronymic(),
+                user.getFirstName(),
+                user.getLastName(),
+                user.getMiddleName(),
                 user.getEmail(),
                 user.getPassword(),
                 mapToGrantedAuthorities(user.getAuthorities()),
                 user.getEnabled(),
-                user.getLastPasswordResetDate()
-        );
+                user.getLastPasswordResetDate(),
+                user.getMetersData());
     }
 
     private static List<GrantedAuthority> mapToGrantedAuthorities(List<Authority> authorities) {

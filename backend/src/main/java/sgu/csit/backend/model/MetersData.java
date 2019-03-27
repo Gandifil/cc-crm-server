@@ -23,8 +23,9 @@ public class MetersData {
     @Column(name = "start_date")
     private Date startDate;
 
-    @Column(name = "user_id")
-    private long userId;
+    @ManyToOne
+    @JoinColumn
+    private User user;
 
     public Long getId() {
         return id;
@@ -66,11 +67,11 @@ public class MetersData {
         this.startDate = startDate;
     }
 
-    public long getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(long userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 }

@@ -22,7 +22,7 @@ public class MetersDataService {
         metersDataRepository.save(metersData);
     }
 
-    public Iterable<MetersData> getMetersData(PeriodType periodType) {
+    public Iterable<MetersData> getAllMetersData(PeriodType periodType) {
         Iterable<MetersData> metersData;
         switch (periodType) {
             case CURRENT_MONTH:
@@ -42,5 +42,45 @@ public class MetersDataService {
                 return null;
         }
         return metersData;
+    }
+
+    public Iterable<MetersData> getAllMetersDataByUserId(PeriodType periodType, Long userId) {
+        Iterable<MetersData> metersData;
+        switch (periodType) {
+            case CURRENT_MONTH:
+                Calendar calendar = Calendar.getInstance();
+                calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMinimum((Calendar.DAY_OF_MONTH)));
+                metersData = metersDataRepository.findByStartDateAfterAndUserId(calendar.getTime(), userId);
+                break;
+            case CURRENT_YEAR:
+                calendar = Calendar.getInstance();
+                calendar.set(Calendar.DAY_OF_YEAR, calendar.getActualMinimum((Calendar.DAY_OF_MONTH)));
+                metersData = metersDataRepository.findByStartDateAfterAndUserId(calendar.getTime(), userId);
+                break;
+            case ALL:
+                metersData = metersDataRepository.findByUserId(userId);
+                break;
+            default:
+                return null;
+        }
+        return metersData;
+    }
+
+    public Iterable<MetersData> getAllMetersDataFromIrresponsibleUsers(PeriodType periodType) {
+        Iterable<MetersData> metersData;
+        switch (periodType) {
+            case CURRENT_MONTH:
+                // TODO: доделать получения показателей пользователей, кто не отправлял последний месяц;
+                break;
+            case CURRENT_YEAR:
+                // TODO: доделать получения показателей пользователей, кто не отправлял последний год;
+                break;
+            case ALL:
+                // TODO: доделать получения показателей пользователей, кто не отправлял вообще (а смысл?);
+                break;
+            default:
+                return null;
+        }
+        return null;
     }
 }

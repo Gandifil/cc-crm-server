@@ -6,12 +6,13 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
 public class User {
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "user_seq")
     @SequenceGenerator(name = "user_seq", sequenceName = "user_seq")
     private Long id;
@@ -26,17 +27,17 @@ public class User {
     @Size(min = 6, max = 100)
     private String password;
 
-    @Column(name = "name", length = 50)
+    @Column(name = "first_name", length = 50)
     @Size(min = 4, max = 50)
-    private String name;
+    private String firstName;
 
-    @Column(name = "surname", length = 50)
+    @Column(name = "last_name", length = 50)
     @Size(min = 4, max = 50)
-    private String surname;
+    private String lastName;
 
-    @Column(name = "patronymic", length = 50)
+    @Column(name = "middle_name", length = 50)
     @Size(min = 4, max = 50)
-    private String patronymic;
+    private String middleName;
 
     @Column(name = "email", length = 50)
     @NotNull
@@ -47,16 +48,19 @@ public class User {
     @NotNull
     private Boolean enabled;
 
-    @Column(name = "lastpasswordresetdata")
+    @Column(name = "last_password_reset_data")
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastPasswordResetDate;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
-            name = "user_authority",
+            name = "user_authorities",
             joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "authority_id", referencedColumnName = "id")})
     private List<Authority> authorities;
+
+    @OneToMany(mappedBy = "user")
+    private Set<MetersData> metersData;
 
     public Long getId() {
         return id;
@@ -82,28 +86,28 @@ public class User {
         this.password = password;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getSurname() {
-        return surname;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setSurname(String lastName) {
+        this.lastName = lastName;
     }
 
-    public String getPatronymic() {
-        return patronymic;
+    public String getMiddleName() {
+        return middleName;
     }
 
-    public void setPatronymic(String patronymic) {
-        this.patronymic = patronymic;
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
     }
 
     public String getEmail() {
@@ -136,5 +140,13 @@ public class User {
 
     public void setLastPasswordResetDate(Date lastPasswordResetDate) {
         this.lastPasswordResetDate = lastPasswordResetDate;
+    }
+
+    public Set<MetersData> getMetersData() {
+        return metersData;
+    }
+
+    public void setUsers(Set<MetersData> metersData) {
+        this.metersData = metersData;
     }
 }
