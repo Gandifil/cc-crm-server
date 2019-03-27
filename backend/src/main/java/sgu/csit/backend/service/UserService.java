@@ -12,9 +12,9 @@ import org.springframework.stereotype.Service;
 import sgu.csit.backend.auth.JwtTokenUtil;
 import sgu.csit.backend.exception.AuthenticationException;
 import sgu.csit.backend.exception.RegistrationException;
-import sgu.csit.backend.model.Authority;
-import sgu.csit.backend.model.AuthorityName;
+import sgu.csit.backend.model.AuthorityType;
 import sgu.csit.backend.model.User;
+import sgu.csit.backend.repository.AuthorityRepository;
 import sgu.csit.backend.repository.UserRepository;
 import sgu.csit.backend.security.JwtUser;
 
@@ -33,6 +33,8 @@ public class UserService {
 
     private final UserRepository userRepository;
 
+    private final AuthorityRepository authorityRepository;
+
     private PasswordEncoder passwordEncoder;
 
     @Autowired
@@ -41,12 +43,14 @@ public class UserService {
             JwtTokenUtil jwtTokenUtil,
             JwtUserDetailsService jwtUserDetailsService,
             UserRepository userRepository,
+            AuthorityRepository authorityRepository,
             PasswordEncoder passwordEncoder
     ) {
         this.authenticationManager = authenticationManager;
         this.jwtTokenUtil = jwtTokenUtil;
         this.jwtUserDetailsService = jwtUserDetailsService;
         this.userRepository = userRepository;
+        this.authorityRepository = authorityRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
@@ -65,26 +69,31 @@ public class UserService {
         }
     }
 
-    public boolean register(User newUser) {
-        if (!userRepository.existsByUsername(newUser.getUsername())) {
-            newUser.setPassword(passwordEncoder.encode(newUser.getPassword()));
-            newUser.setEmail(newUser.getUsername());
-            newUser.setEnabled(true);
-            // TODO: add authority to new user
-            userRepository.save(newUser);
-            return true;
+    public boolean register(User user) {
+        if (userRepository.existsByUsername(user.getUsername())) {
+            throw new RegistrationException("Account with that username already exists");
         }
-        throw new RegistrationException("Account already exists");
+
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setEmail(user.getUsername());
+        user.setEnabled(true);
+        user.setAuthorities(Collections.singletonList(authorityRepository.findByName(AuthorityType.ROLE_USER)));
+        userRepository.save(user);
+        return true;
     }
 
     public String refresh(String authToken) {
         final String token = authToken.substring(7);
         String username = jwtTokenUtil.getUsernameFromToken(token);
-        JwtUser user = (JwtUser) jwtUserDetailsService.loadUserByUsername(username);
+        JwtUser user = (JwtUser)jwtUserDetailsService.loadUserByUsername(username);
 
         if (jwtTokenUtil.canTokenBeRefreshed(token, user.getLastPasswordResetDate())) {
             return jwtTokenUtil.refreshToken(token);
         }
         return null;
+    }
+
+    public User getUserById(Long id) {
+        return userRepository.findById(id).orElse(null);
     }
 }

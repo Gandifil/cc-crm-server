@@ -35,10 +35,10 @@ public class AuthenticationController {
         String authToken = request.getHeader(tokenHeader);
         final String refreshedToken = userService.refresh(authToken);
 
-        if (refreshedToken != null) {
-            return ResponseEntity.ok(new JwtAuthenticationResponse(refreshedToken));
+        if (refreshedToken == null) {
+            return ResponseEntity.badRequest().body(null);
         }
-        return ResponseEntity.badRequest().body(null);
+        return ResponseEntity.ok(new JwtAuthenticationResponse(refreshedToken));
     }
 
     @ExceptionHandler({AuthenticationException.class})
