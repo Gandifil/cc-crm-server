@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @RestController
 public class CorsController {
-    @RequestMapping(value= "*", method= RequestMethod.OPTIONS)
+    @RequestMapping(value= "/**", method= RequestMethod.OPTIONS)
     public void corsHeaders(HttpServletResponse response) {
         response.addHeader("Access-Control-Allow-Origin", "*");
         response.addHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
