@@ -41,7 +41,7 @@ public class MetersDataController {
         this.userDetailsService = userDetailsService;
     }
 
-    @CrossOrigin(origins = "**", maxAge = 3600)
+    //@CrossOrigin(origins = "**", maxAge = 3600)
     @RequestMapping(value = "/meters/send", method = RequestMethod.POST)
     public ResponseEntity sendMetersData(@RequestBody MetersData metersData, HttpServletRequest httpServletRequest) {
         metersData.setStartDate(new Date());
