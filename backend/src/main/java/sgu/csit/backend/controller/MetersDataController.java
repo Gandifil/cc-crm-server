@@ -17,7 +17,6 @@ import sgu.csit.backend.service.UserService;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 
-@CrossOrigin
 @RestController
 @PreAuthorize("hasRole({'USER'})")
 public class MetersDataController {
@@ -42,6 +41,7 @@ public class MetersDataController {
         this.userDetailsService = userDetailsService;
     }
 
+    @CrossOrigin
     @RequestMapping(value = "/meters/send", method = RequestMethod.POST)
     public ResponseEntity sendMetersData(@RequestBody MetersData metersData, HttpServletRequest httpServletRequest) {
         metersData.setStartDate(new Date());
@@ -50,6 +50,7 @@ public class MetersDataController {
         return ResponseEntity.ok("Meters data have been sent successfully!");
     }
 
+    @CrossOrigin
     @RequestMapping(value = "/meters/", method = RequestMethod.GET)
     public ResponseEntity getAllMetersData(@RequestParam("periodType") PeriodType periodType,
                                            HttpServletRequest httpServletRequest) {
