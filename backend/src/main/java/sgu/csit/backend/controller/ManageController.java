@@ -14,6 +14,7 @@ import sgu.csit.backend.model.MetersData;
 import sgu.csit.backend.model.PeriodType;
 import sgu.csit.backend.service.MetersDataService;
 
+@CrossOrigin
 @Repository
 @PreAuthorize("hasRole({'ADMIN'})")
 public class ManageController {

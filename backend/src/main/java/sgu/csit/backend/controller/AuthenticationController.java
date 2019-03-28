@@ -12,6 +12,7 @@ import sgu.csit.backend.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 
+@CrossOrigin
 @RestController
 public class AuthenticationController {
     @Value("${jwt.header}")
@@ -24,7 +25,6 @@ public class AuthenticationController {
         this.userService = userService;
     }
 
-    @CrossOrigin
     @RequestMapping(value = "${jwt.route.authentication.path}", method = RequestMethod.POST)
     public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtAuthenticationRequest authenticationRequest) throws AuthenticationException {
         final String token = userService.login(authenticationRequest.getUsername(), authenticationRequest.getPassword());

@@ -10,6 +10,7 @@ import sgu.csit.backend.exception.RegistrationException;
 import sgu.csit.backend.model.User;
 import sgu.csit.backend.service.UserService;
 
+@CrossOrigin
 @RestController
 public class RegistrationController {
     @Value("${jwt.header}")

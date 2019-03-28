@@ -17,6 +17,7 @@ import sgu.csit.backend.service.UserService;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 
+@CrossOrigin
 @RestController
 @PreAuthorize("hasRole({'USER'})")
 public class MetersDataController {
