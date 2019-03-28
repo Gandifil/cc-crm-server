@@ -50,7 +50,6 @@ public class MetersDataController {
         return ResponseEntity.ok("Meters data have been sent successfully!");
     }
 
-    @CrossOrigin
     @RequestMapping(value = "/meters/", method = RequestMethod.GET)
     public ResponseEntity getAllMetersData(@RequestParam("periodType") PeriodType periodType,
                                            HttpServletRequest httpServletRequest) {

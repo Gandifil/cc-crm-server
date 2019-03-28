@@ -13,7 +13,6 @@ import sgu.csit.backend.security.JwtUser;
 
 import javax.servlet.http.HttpServletRequest;
 
-@CrossOrigin
 @RestController
 public class UserController {
     @Value("${jwt.header}")
