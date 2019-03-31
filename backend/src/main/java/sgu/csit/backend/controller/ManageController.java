@@ -27,9 +27,11 @@ public class ManageController {
     private final UserDetailsService userDetailsService;
 
     @Autowired
-    public ManageController(JwtTokenUtil jwtTokenUtil,
-                                MetersDataService metersDataService,
-                                @Qualifier("jwtUserDetailsService") UserDetailsService userDetailsService) {
+    public ManageController(
+            JwtTokenUtil jwtTokenUtil,
+            MetersDataService metersDataService,
+            @Qualifier("jwtUserDetailsService") UserDetailsService userDetailsService
+    ) {
         this.jwtTokenUtil = jwtTokenUtil;
         this.metersDataService = metersDataService;
         this.userDetailsService = userDetailsService;
@@ -42,8 +44,10 @@ public class ManageController {
     }
 
     @RequestMapping(value = "/manage/meters", method = RequestMethod.GET)
-    public ResponseEntity getAllMetersData(@RequestParam("periodType") PeriodType periodType,
-                                           @RequestParam("userId") Long userId) {
+    public ResponseEntity getAllMetersData(
+            @RequestParam("periodType") PeriodType periodType,
+            @RequestParam("userId") Long userId
+    ) {
         Iterable<MetersData> metersData = metersDataService.getAllMetersDataByUserId(periodType, userId);
         return ResponseEntity.ok(metersData);
     }

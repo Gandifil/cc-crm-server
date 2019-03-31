@@ -9,7 +9,7 @@ import java.util.Date;
 public class MetersData {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private long id;
 
     @Column(name = "electricity")
     private int electricity;
@@ -27,11 +27,11 @@ public class MetersData {
     @JoinColumn
     private User user;
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
