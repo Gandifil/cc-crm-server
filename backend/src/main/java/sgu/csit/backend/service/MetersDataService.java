@@ -28,12 +28,12 @@ public class MetersDataService {
             case CURRENT_MONTH:
                 Calendar calendar = Calendar.getInstance();
                 calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMinimum((Calendar.DAY_OF_MONTH)));
-                metersData = metersDataRepository.findByStartDateAfter(calendar.getTime());
+                metersData = metersDataRepository.findByDateAfter(calendar.getTime());
                 break;
             case CURRENT_YEAR:
                 calendar = Calendar.getInstance();
                 calendar.set(Calendar.DAY_OF_YEAR, calendar.getActualMinimum((Calendar.DAY_OF_MONTH)));
-                metersData = metersDataRepository.findByStartDateAfter(calendar.getTime());
+                metersData = metersDataRepository.findByDateAfter(calendar.getTime());
                 break;
             case ALL:
                 metersData = metersDataRepository.findAll();
@@ -50,12 +50,12 @@ public class MetersDataService {
             case CURRENT_MONTH:
                 Calendar calendar = Calendar.getInstance();
                 calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMinimum((Calendar.DAY_OF_MONTH)));
-                metersData = metersDataRepository.findByStartDateAfterAndUserId(calendar.getTime(), userId);
+                metersData = metersDataRepository.findByDateAfterAndUserId(calendar.getTime(), userId);
                 break;
             case CURRENT_YEAR:
                 calendar = Calendar.getInstance();
                 calendar.set(Calendar.DAY_OF_YEAR, calendar.getActualMinimum((Calendar.DAY_OF_MONTH)));
-                metersData = metersDataRepository.findByStartDateAfterAndUserId(calendar.getTime(), userId);
+                metersData = metersDataRepository.findByDateAfterAndUserId(calendar.getTime(), userId);
                 break;
             case ALL:
                 metersData = metersDataRepository.findByUserId(userId);
@@ -66,21 +66,4 @@ public class MetersDataService {
         return metersData;
     }
 
-    public Iterable<MetersData> getAllMetersDataFromIrresponsibleUsers(PeriodType periodType) {
-        Iterable<MetersData> metersData;
-        switch (periodType) {
-            case CURRENT_MONTH:
-                // TODO: доделать получения показателей пользователей, кто не отправлял последний месяц;
-                break;
-            case CURRENT_YEAR:
-                // TODO: доделать получения показателей пользователей, кто не отправлял последний год;
-                break;
-            case ALL:
-                // TODO: доделать получения показателей пользователей, кто не отправлял вообще (а смысл?);
-                break;
-            default:
-                return null;
-        }
-        return null;
-    }
 }

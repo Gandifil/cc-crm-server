@@ -13,12 +13,15 @@ import sgu.csit.backend.auth.JwtTokenUtil;
 import sgu.csit.backend.exception.AuthenticationException;
 import sgu.csit.backend.exception.RegistrationException;
 import sgu.csit.backend.model.AuthorityType;
+import sgu.csit.backend.model.MetersData;
+import sgu.csit.backend.model.PeriodType;
 import sgu.csit.backend.model.User;
 import sgu.csit.backend.repository.AuthorityRepository;
 import sgu.csit.backend.repository.UserRepository;
 import sgu.csit.backend.security.JwtUser;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService {
@@ -95,5 +98,44 @@ public class UserService {
 
     public User getUserById(Long id) {
         return userRepository.findById(id).orElse(null);
+    }
+
+    private boolean isResponsibleUser(User user, Date date) {
+        for (MetersData metersData : user.getMetersData()) {
+            if (metersData.getDate().after(date)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public Iterable<User> getUsers(PeriodType periodType) {
+        List<User> users;
+        switch (periodType) {
+            case CURRENT_MONTH:
+                Calendar calendar = Calendar.getInstance();
+                calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMinimum((Calendar.DAY_OF_MONTH)));
+                // TODO: заменить findAll на выборку jpa
+                users = new ArrayList<>(userRepository.findAll())
+                        .stream()
+                        .filter(u -> !isResponsibleUser(u, calendar.getTime()))
+                        .collect(Collectors.toList());
+                break;
+            case CURRENT_YEAR:
+                calendar = Calendar.getInstance();
+                calendar.set(Calendar.DAY_OF_YEAR, calendar.getActualMinimum((Calendar.DAY_OF_MONTH)));
+                // TODO: заменить findAll на выборку jpa
+                users = new ArrayList<>(userRepository.findAll())
+                        .stream()
+                        .filter(u -> !isResponsibleUser(u, calendar.getTime()))
+                        .collect(Collectors.toList());
+                break;
+            case ALL:
+                users = userRepository.findAll();
+                break;
+            default:
+                return null;
+        }
+        return users;
     }
 }

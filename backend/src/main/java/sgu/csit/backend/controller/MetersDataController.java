@@ -49,7 +49,7 @@ public class MetersDataController {
             @AuthenticationPrincipal JwtUser jwtUser,
             @RequestBody MetersData metersData
     ) {
-        metersData.setStartDate(new Date());
+        metersData.setDate(new Date());
         metersData.setUser(userService.getUserById(jwtUser.getId()));
         metersDataService.addMetersData(metersData);
         return ResponseEntity.ok("Meters data have been sent successfully!");

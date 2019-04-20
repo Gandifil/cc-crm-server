@@ -1,5 +1,7 @@
 package sgu.csit.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -52,6 +54,15 @@ public class User {
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastPasswordResetDate;
 
+    @Column(name = "apartment")
+    @NotNull
+    private int apartment;
+
+    @Column(name = "phone_number")
+    @NotNull
+    private String phoneNumber;
+
+    @JsonIgnore
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_authorities",
@@ -59,7 +70,8 @@ public class User {
             inverseJoinColumns = {@JoinColumn(name = "authority_id", referencedColumnName = "id")})
     private List<Authority> authorities;
 
-    @OneToMany(mappedBy = "user")
+    //@JsonIgnore
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private Set<MetersData> metersData;
 
     public Long getId() {
@@ -148,5 +160,21 @@ public class User {
 
     public void setUsers(Set<MetersData> metersData) {
         this.metersData = metersData;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public int getApartment() {
+        return apartment;
+    }
+
+    public void setApartment(int apartment) {
+        this.apartment = apartment;
     }
 }

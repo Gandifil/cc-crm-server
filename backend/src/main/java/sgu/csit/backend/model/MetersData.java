@@ -1,5 +1,8 @@
 package sgu.csit.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -20,12 +23,18 @@ public class MetersData {
     @Column(name = "cold_water")
     private int coldWater;
 
-    @Column(name = "start_date")
-    private Date startDate;
+    @Column(name = "date")
+    private Date date;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn
     private User user;
+
+//    @JsonProperty("user")
+//    public Long getUserId() {
+//        return user.getId();
+//    }
 
     public long getId() {
         return id;
@@ -59,12 +68,12 @@ public class MetersData {
         this.coldWater = coldWater;
     }
 
-    public Date getStartDate() {
-        return startDate;
+    public Date getDate() {
+        return date;
     }
 
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public User getUser() {
