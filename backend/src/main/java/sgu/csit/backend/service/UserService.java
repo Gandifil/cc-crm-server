@@ -100,38 +100,37 @@ public class UserService {
         return userRepository.findById(id).orElse(null);
     }
 
-    private boolean isResponsibleUser(User user, Date date) {
+    private boolean isIrresponsibleUser(User user, Date date) {
         for (MetersData metersData : user.getMetersData()) {
             if (metersData.getDate().after(date)) {
-                return true;
+                return false;
             }
         }
-        return false;
+        return true;
     }
 
     public Iterable<User> getUsers(PeriodType periodType) {
-        List<User> users;
+        List<User> users = userRepository.findAll();
         switch (periodType) {
             case CURRENT_MONTH:
                 Calendar calendar = Calendar.getInstance();
                 calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMinimum((Calendar.DAY_OF_MONTH)));
                 // TODO: заменить findAll на выборку jpa
-                users = new ArrayList<>(userRepository.findAll())
+                users = users
                         .stream()
-                        .filter(u -> !isResponsibleUser(u, calendar.getTime()))
+                        .filter(u -> isIrresponsibleUser(u, calendar.getTime()))
                         .collect(Collectors.toList());
                 break;
             case CURRENT_YEAR:
                 calendar = Calendar.getInstance();
                 calendar.set(Calendar.DAY_OF_YEAR, calendar.getActualMinimum((Calendar.DAY_OF_MONTH)));
                 // TODO: заменить findAll на выборку jpa
-                users = new ArrayList<>(userRepository.findAll())
+                users = users
                         .stream()
-                        .filter(u -> !isResponsibleUser(u, calendar.getTime()))
+                        .filter(u -> isIrresponsibleUser(u, calendar.getTime()))
                         .collect(Collectors.toList());
                 break;
             case ALL:
-                users = userRepository.findAll();
                 break;
             default:
                 return null;

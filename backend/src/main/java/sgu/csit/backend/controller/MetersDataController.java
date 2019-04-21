@@ -19,6 +19,7 @@ import java.util.Date;
 
 @RestController
 @PreAuthorize("hasRole({'USER'})")
+@RequestMapping("/meters/")
 public class MetersDataController {
     @Value("${jwt.header}")
     private String tokenHeader;
@@ -44,7 +45,7 @@ public class MetersDataController {
     }
 
     //@CrossOrigin(origins = "**", maxAge = 3600)
-    @RequestMapping(value = "/meters/send", method = RequestMethod.POST)
+    @RequestMapping(value = "/send", method = RequestMethod.POST)
     public ResponseEntity sendMetersData(
             @AuthenticationPrincipal JwtUser jwtUser,
             @RequestBody MetersData metersData
@@ -55,7 +56,7 @@ public class MetersDataController {
         return ResponseEntity.ok("Meters data have been sent successfully!");
     }
 
-    @RequestMapping(value = "/meters/", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public ResponseEntity getAllMetersData(
             @AuthenticationPrincipal JwtUser user,
             @RequestParam("periodType") PeriodType periodType

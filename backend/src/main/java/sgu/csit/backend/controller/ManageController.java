@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 import sgu.csit.backend.auth.JwtTokenUtil;
 import sgu.csit.backend.model.MetersData;
@@ -17,6 +16,7 @@ import sgu.csit.backend.service.UserService;
 
 @RestController
 @PreAuthorize("hasRole({'ADMIN'})")
+@RequestMapping("/manage/")
 public class ManageController {
     @Value("${jwt.header}")
     private String tokenHeader;
@@ -41,13 +41,13 @@ public class ManageController {
         this.userService = userService;
     }
 
-    @RequestMapping(value = "/manage/meters/", method = RequestMethod.GET)
+    @RequestMapping(value = "/meters/", method = RequestMethod.GET)
     public ResponseEntity getAllMetersData(@RequestParam("periodType") PeriodType periodType) {
         Iterable<MetersData> metersData = metersDataService.getAllMetersData(periodType);
         return ResponseEntity.ok(metersData);
     }
 
-    @RequestMapping(value = "/manage/meters/{userId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/meters/{userId}", method = RequestMethod.GET)
     public ResponseEntity getAllMetersData(
             @RequestParam("periodType") PeriodType periodType,
             @PathVariable("userId") Long userId
@@ -56,7 +56,7 @@ public class ManageController {
         return ResponseEntity.ok(metersData);
     }
 
-    @RequestMapping(value = "/manage/users/", method = RequestMethod.GET)
+    @RequestMapping(value = "/users/", method = RequestMethod.GET)
     public ResponseEntity getUsers(@RequestParam("periodType") PeriodType periodType) {
         Iterable<User> users = userService.getUsers(periodType);
         return ResponseEntity.ok(users);
