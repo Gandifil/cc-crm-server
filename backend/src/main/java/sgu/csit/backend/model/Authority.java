@@ -15,12 +15,18 @@ public class Authority {
     private Long id;
 
     @Column(name = "name", length = 50)
-    @NotBlank
+//    @NotBlank
     @Enumerated(EnumType.STRING)
     private AuthorityType name;
 
     @ManyToMany(mappedBy = "authorities", fetch = FetchType.LAZY)
     private List<User> users;
+
+    // default constructor for Spring
+    public Authority() {}
+    public Authority(AuthorityType typeName) {
+        this.name = typeName;
+    }
 
     public Long getId() {
         return id;
