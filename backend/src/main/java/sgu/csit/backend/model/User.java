@@ -1,6 +1,5 @@
 package sgu.csit.backend.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
@@ -14,20 +13,17 @@ import java.util.Set;
 @Entity
 @Table(name = "users")
 public class User {
-    @JsonIgnore
     @Id
     @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "user_seq")
     @SequenceGenerator(name = "user_seq", sequenceName = "user_seq")
     private Long id;
 
-    @JsonIgnore
     @Column(name = "username", length = 24, unique = true)
     @NotBlank
     @Size(min = 4, max = 24)
     private String username;
 
-    @JsonIgnore
     @Column(name = "password", length = 100)
     @NotBlank
     @Size(min = 6, max = 100)
@@ -67,12 +63,10 @@ public class User {
     @NotNull
     private Boolean enabled;
 
-    @JsonIgnore
     @Column(name = "last_password_reset_data")
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastPasswordResetDate;
 
-    @JsonIgnore
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_authorities",
@@ -80,7 +74,6 @@ public class User {
             inverseJoinColumns = {@JoinColumn(name = "authority_id", referencedColumnName = "id")})
     private List<Authority> authorities;
 
-    @JsonIgnore
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private Set<MetersData> metersData;
 

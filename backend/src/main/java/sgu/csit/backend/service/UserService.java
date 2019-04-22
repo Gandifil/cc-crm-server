@@ -65,6 +65,7 @@ public class UserService {
             throw new AuthenticationException("Bad credentials!", e);
         }
     }
+
     public boolean register(User user) {
         if (userRepository.existsByUsername(user.getUsername())) {
             throw new RegistrationException("Account with such username already exists!");
@@ -84,6 +85,7 @@ public class UserService {
         userRepository.save(user);
         return true;
     }
+
     public String refresh(String authToken) {
         final String token = authToken.substring(7);
         String username = jwtTokenUtil.getUsernameFromToken(token);
@@ -117,6 +119,7 @@ public class UserService {
         }
         return calendar;
     }
+
     public Map<Integer, Set<MetersData>> getAllApartments(PeriodType periodType) {
         Calendar calendar = getActualMinOf(periodType);
 
@@ -144,6 +147,7 @@ public class UserService {
                 return false;
         return true;
     }
+
     public Map<Integer, Set<User>> getBadApartments(PeriodType periodType) {
         Calendar calendar = getActualMinOf(periodType);
 
