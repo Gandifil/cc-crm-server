@@ -1,6 +1,7 @@
 package sgu.csit.backend.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -13,54 +14,63 @@ import java.util.Set;
 @Entity
 @Table(name = "users")
 public class User {
+    @JsonIgnore
     @Id
     @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "user_seq")
     @SequenceGenerator(name = "user_seq", sequenceName = "user_seq")
     private Long id;
 
+    @JsonIgnore
     @Column(name = "username", length = 24, unique = true)
     @NotBlank
     @Size(min = 4, max = 24)
     private String username;
 
+    @JsonIgnore
     @Column(name = "password", length = 100)
     @NotBlank
     @Size(min = 6, max = 100)
     private String password;
 
     @Column(name = "first_name", length = 50)
-    @Size(min = 4, max = 50)
+    @NotBlank
+    @Size(min = 3, max = 50)
     private String firstName;
 
     @Column(name = "last_name", length = 50)
-    @Size(min = 4, max = 50)
+    @NotBlank
+    @Size(min = 3, max = 50)
     private String lastName;
 
     @Column(name = "middle_name", length = 50)
-    @Size(min = 4, max = 50)
+    @NotBlank
+    @Size(min = 3, max = 50)
     private String middleName;
 
     @Column(name = "email", length = 50)
-    @NotNull
-    @Size(min = 4, max = 50)
+    @NotBlank
+    @Size(min = 5, max = 50)
     private String email;
+
+    @Column(name = "apartment")
+    @NotNull
+    @Range(min = 0)
+    private Integer apartment;
+
+    @Column(name = "phone_number")
+    @NotNull
+    @Size(min = 6)
+    private String phoneNumber;
 
     @Column(name = "enabled")
     @NotNull
     private Boolean enabled;
 
+    @JsonIgnore
     @Column(name = "last_password_reset_data")
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastPasswordResetDate;
-
-    @Column(name = "apartment")
-    @NotNull
-    private int apartment;
-
-    @Column(name = "phone_number")
-    @NotNull
-    private String phoneNumber;
 
     @JsonIgnore
     @ManyToMany(fetch = FetchType.EAGER)
@@ -70,7 +80,7 @@ public class User {
             inverseJoinColumns = {@JoinColumn(name = "authority_id", referencedColumnName = "id")})
     private List<Authority> authorities;
 
-    //@JsonIgnore
+    @JsonIgnore
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private Set<MetersData> metersData;
 
@@ -170,11 +180,11 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public int getApartment() {
+    public Integer getApartment() {
         return apartment;
     }
 
-    public void setApartment(int apartment) {
+    public void setApartment(Integer apartment) {
         this.apartment = apartment;
     }
 }

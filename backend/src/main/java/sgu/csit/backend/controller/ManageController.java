@@ -14,19 +14,19 @@ import sgu.csit.backend.model.User;
 import sgu.csit.backend.service.MetersDataService;
 import sgu.csit.backend.service.UserService;
 
+import java.util.Map;
+import java.util.Set;
+
 @RestController
 @PreAuthorize("hasRole({'ADMIN'})")
 @RequestMapping("/manage/")
 public class ManageController {
     @Value("${jwt.header}")
     private String tokenHeader;
-
     private final JwtTokenUtil jwtTokenUtil;
 
     private final MetersDataService metersDataService;
-
     private final UserDetailsService userDetailsService;
-
     private final UserService userService;
 
     @Autowired
@@ -41,25 +41,28 @@ public class ManageController {
         this.userService = userService;
     }
 
-    @RequestMapping(value = "/meters/", method = RequestMethod.GET)
-    public ResponseEntity getAllMetersData(@RequestParam("periodType") PeriodType periodType) {
-        Iterable<MetersData> metersData = metersDataService.getAllMetersData(periodType);
-        return ResponseEntity.ok(metersData);
-    }
-
-    @RequestMapping(value = "/meters/{userId}", method = RequestMethod.GET)
+    // meters by user's apartment
+    @RequestMapping(value = "/meters/{userApart}", method = RequestMethod.GET)
     public ResponseEntity getAllMetersData(
             @RequestParam("periodType") PeriodType periodType,
-            @PathVariable("userId") Long userId
+            @PathVariable("userApart") Integer userApart
     ) {
-        Iterable<MetersData> metersData = metersDataService.getAllMetersDataByUserId(periodType, userId);
+        Iterable<MetersData> metersData = metersDataService.getAllMetersDataByUserApart(periodType, userApart);
         return ResponseEntity.ok(metersData);
     }
 
+    // all apartments with meters
+    @RequestMapping(value = "/meters/", method = RequestMethod.GET)
+    public ResponseEntity getAllApartments(@RequestParam("periodType") PeriodType periodType) {
+        Map<Integer, Set<MetersData>> apartments = userService.getAllApartments(periodType);
+        return ResponseEntity.ok(apartments);
+    }
+
+    // bad apartments with users
     @RequestMapping(value = "/users/", method = RequestMethod.GET)
-    public ResponseEntity getUsers(@RequestParam("periodType") PeriodType periodType) {
-        Iterable<User> users = userService.getUsers(periodType);
-        return ResponseEntity.ok(users);
+    public ResponseEntity getBadApartments(@RequestParam("periodType") PeriodType periodType) {
+        Map<Integer, Set<User>> badApartments = userService.getBadApartments(periodType);
+        return ResponseEntity.ok(badApartments);
     }
 
 }

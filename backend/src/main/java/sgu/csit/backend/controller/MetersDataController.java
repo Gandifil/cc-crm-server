@@ -23,13 +23,10 @@ import java.util.Date;
 public class MetersDataController {
     @Value("${jwt.header}")
     private String tokenHeader;
-
     private final JwtTokenUtil jwtTokenUtil;
 
     private final MetersDataService metersDataService;
-
     private final UserService userService;
-
     private final UserDetailsService userDetailsService;
 
     @Autowired
@@ -56,13 +53,14 @@ public class MetersDataController {
         return ResponseEntity.ok("Meters data have been sent successfully!");
     }
 
+    // meters
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ResponseEntity getAllMetersData(
             @AuthenticationPrincipal JwtUser user,
             @RequestParam("periodType") PeriodType periodType
     ) {
         Iterable<MetersData> metersData =
-                metersDataService.getAllMetersDataByUserId(periodType, user.getId());
+            metersDataService.getAllMetersDataByUserApart(periodType, user.getApartment());
         return ResponseEntity.ok(metersData);
     }
 }

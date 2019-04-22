@@ -9,8 +9,8 @@ import java.util.List;
 
 @Repository
 public interface MetersDataRepository extends JpaRepository<MetersData, Long> {
-    Iterable<MetersData> findByUserId(Long userId);
+    Iterable<MetersData> findByUser_Apartment(Integer userApart);
     Iterable<MetersData> findByDateAfter(Date date);
-    Iterable<MetersData> findByDateAfterAndUserId(Date date, Long userId);
+    Iterable<MetersData> findByDateAfterAndUser_Apartment(Date date, Integer userApart);
     Iterable<MetersData> findByDateBefore(Date date);
 }

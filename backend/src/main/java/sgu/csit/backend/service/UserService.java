@@ -24,15 +24,11 @@ import java.util.stream.Collectors;
 public class UserService {
     @Value("${jwt.header}")
     private String tokenHeader;
-
     private final AuthenticationManager authenticationManager;
-
     private final JwtTokenUtil jwtTokenUtil;
-
     private final JwtUserDetailsService jwtUserDetailsService;
 
     private final UserRepository userRepository;
-
     private final AuthorityRepository authorityRepository;
 
     private PasswordEncoder passwordEncoder;
@@ -54,6 +50,7 @@ public class UserService {
         this.passwordEncoder = passwordEncoder;
     }
 
+    // auth
     public String login(String username, String password) {
         Objects.requireNonNull(username);
         Objects.requireNonNull(password);
@@ -68,20 +65,25 @@ public class UserService {
             throw new AuthenticationException("Bad credentials!", e);
         }
     }
-
     public boolean register(User user) {
         if (userRepository.existsByUsername(user.getUsername())) {
-            throw new RegistrationException("Account with that username already exists");
+            throw new RegistrationException("Account with such username already exists!");
         }
 
+        if (user.getApartment() == 0)
+            if (!userRepository.existsByApartment(0))
+                user.setAuthorities(Collections.singletonList(authorityRepository.findByName(AuthorityType.ROLE_ADMIN)));
+            else
+                throw new RegistrationException("Admin account already exists!");
+        else
+            user.setAuthorities(Collections.singletonList(authorityRepository.findByName(AuthorityType.ROLE_USER)));
+
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setEmail(user.getUsername());
         user.setEnabled(true);
-        user.setAuthorities(Collections.singletonList(authorityRepository.findByName(AuthorityType.ROLE_USER)));
+
         userRepository.save(user);
         return true;
     }
-
     public String refresh(String authToken) {
         final String token = authToken.substring(7);
         String username = jwtTokenUtil.getUsernameFromToken(token);
@@ -93,45 +95,66 @@ public class UserService {
         return null;
     }
 
+    // retrieval
     public User getUserById(Long id) {
         return userRepository.findById(id).orElse(null);
     }
 
-    private boolean isIrresponsibleUser(User user, Date date) {
-        for (MetersData metersData : user.getMetersData()) {
-            if (metersData.getDate().after(date)) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public Iterable<User> getUsers(PeriodType periodType) {
-        List<User> users = userRepository.findAll();
+    private Calendar getActualMinOf(PeriodType periodType) {
+        Calendar calendar = Calendar.getInstance();
         switch (periodType) {
             case CURRENT_MONTH:
-                Calendar calendar = Calendar.getInstance();
-                calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMinimum((Calendar.DAY_OF_MONTH)));
-                // TODO: заменить findAll на выборку jpa
-                users = users
-                        .stream()
-                        .filter(u -> isIrresponsibleUser(u, calendar.getTime()))
-                        .collect(Collectors.toList());
+                calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMinimum(Calendar.DAY_OF_MONTH));
                 break;
             case CURRENT_YEAR:
-                calendar = Calendar.getInstance();
-                calendar.set(Calendar.DAY_OF_YEAR, calendar.getActualMinimum((Calendar.DAY_OF_MONTH)));
-                // TODO: заменить findAll на выборку jpa
-                users = users
-                        .stream()
-                        .filter(u -> isIrresponsibleUser(u, calendar.getTime()))
-                        .collect(Collectors.toList());
+                calendar.set(Calendar.DAY_OF_YEAR, calendar.getActualMinimum(Calendar.DAY_OF_MONTH));
                 break;
             case ALL:
+                calendar.set(Calendar.YEAR, 1900);
                 break;
             default:
                 return null;
         }
-        return users;
+        return calendar;
+    }
+    public Map<Integer, Set<MetersData>> getAllApartments(PeriodType periodType) {
+        Calendar calendar = getActualMinOf(periodType);
+
+        Map<Integer, Set<MetersData>> apartments = new HashMap<>();
+        for (User user : userRepository.findAll()) {
+            Integer apartment = user.getApartment();
+            if (apartment == 0)
+                continue;
+            Set<MetersData> metersData = user.getMetersData()
+                                                .stream()
+                                                .filter(md -> md.getDate().after(calendar.getTime()))
+                                                .collect(Collectors.toSet());
+            if (apartments.containsKey(apartment))
+                apartments.get(apartment).addAll(metersData);
+            else
+                apartments.put(apartment, metersData);
+        }
+
+        return apartments;
+    }
+
+    private boolean notActual(Set<MetersData> metersData, Date date) {
+        for (MetersData md : metersData)
+            if (md.getDate().after(date))
+                return false;
+        return true;
+    }
+    public Map<Integer, Set<User>> getBadApartments(PeriodType periodType) {
+        Calendar calendar = getActualMinOf(periodType);
+
+        Map<Integer, Set<User>> badApartments = new HashMap<>();
+        Map<Integer, Set<MetersData>> apartments = getAllApartments(PeriodType.ALL);
+        for (Integer apartment : apartments.keySet())
+            if (notActual(apartments.get(apartment), calendar.getTime()) && apartment != 0) {
+                Set<User> badUsers = userRepository.findAllByApartment(apartment);
+                badApartments.put(apartment, badUsers);
+            }
+
+        return badApartments;
     }
 }

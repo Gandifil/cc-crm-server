@@ -31,11 +31,6 @@ public class MetersData {
     @JoinColumn
     private User user;
 
-//    @JsonProperty("user")
-//    public Long getUserId() {
-//        return user.getId();
-//    }
-
     public long getId() {
         return id;
     }

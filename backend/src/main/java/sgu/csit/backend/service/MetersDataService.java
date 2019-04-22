@@ -10,7 +10,6 @@ import java.util.Calendar;
 
 @Service
 public class MetersDataService {
-
     private final MetersDataRepository metersDataRepository;
 
     @Autowired
@@ -18,52 +17,31 @@ public class MetersDataService {
         this.metersDataRepository = metersDataRepository;
     }
 
+    // saving
     public void addMetersData(MetersData metersData) {
         metersDataRepository.save(metersData);
     }
 
-    public Iterable<MetersData> getAllMetersData(PeriodType periodType) {
+    // retrieval
+    public Iterable<MetersData> getAllMetersDataByUserApart(PeriodType periodType, Integer userApart) {
         Iterable<MetersData> metersData;
         switch (periodType) {
             case CURRENT_MONTH:
                 Calendar calendar = Calendar.getInstance();
                 calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMinimum((Calendar.DAY_OF_MONTH)));
-                metersData = metersDataRepository.findByDateAfter(calendar.getTime());
+                metersData = metersDataRepository.findByDateAfterAndUser_Apartment(calendar.getTime(), userApart);
                 break;
             case CURRENT_YEAR:
                 calendar = Calendar.getInstance();
                 calendar.set(Calendar.DAY_OF_YEAR, calendar.getActualMinimum((Calendar.DAY_OF_MONTH)));
-                metersData = metersDataRepository.findByDateAfter(calendar.getTime());
+                metersData = metersDataRepository.findByDateAfterAndUser_Apartment(calendar.getTime(), userApart);
                 break;
             case ALL:
-                metersData = metersDataRepository.findAll();
+                metersData = metersDataRepository.findByUser_Apartment(userApart);
                 break;
             default:
                 return null;
         }
         return metersData;
     }
-
-    public Iterable<MetersData> getAllMetersDataByUserId(PeriodType periodType, Long userId) {
-        Iterable<MetersData> metersData;
-        switch (periodType) {
-            case CURRENT_MONTH:
-                Calendar calendar = Calendar.getInstance();
-                calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMinimum((Calendar.DAY_OF_MONTH)));
-                metersData = metersDataRepository.findByDateAfterAndUserId(calendar.getTime(), userId);
-                break;
-            case CURRENT_YEAR:
-                calendar = Calendar.getInstance();
-                calendar.set(Calendar.DAY_OF_YEAR, calendar.getActualMinimum((Calendar.DAY_OF_MONTH)));
-                metersData = metersDataRepository.findByDateAfterAndUserId(calendar.getTime(), userId);
-                break;
-            case ALL:
-                metersData = metersDataRepository.findByUserId(userId);
-                break;
-            default:
-                return null;
-        }
-        return metersData;
-    }
-
 }
