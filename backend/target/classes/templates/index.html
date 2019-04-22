@@ -1,0 +1,238 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>ЖКХ 411 группа</title>
+   <link href="/pub/style.css" rel="stylesheet">
+   <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap/dist/css/bootstrap.min.css" />
+  <link
+    type="text/css"
+    rel="stylesheet"
+    href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css"
+  />
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;subset=cyrillic" rel="stylesheet">
+  <link rel="stylesheet" href="/css/grid.css" />
+</head>
+
+<!-- component template -->
+<script type="text/x-template" id="grid-template">
+  <table>
+    <thead>
+    <tr>
+      <th v-for="key in columns"
+          @click="sortBy(key)"
+          :class="{ active: sortKey == key }">
+        {{ key | capitalize }}
+        <span class="arrow" :class="sortOrders[key] > 0 ? 'asc' : 'dsc'">
+          </span>
+      </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr v-for="entry in filteredHeroes">
+      <td v-for="key in columns">
+        {{entry[key]}}
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</script>
+  <body>
+    <div id="app" v-cloak>
+      <b-container fluid>
+        <b-row class="mt-5" v-show="state == unlogined">
+          <b-col>   <a class="forgottenPassword" @click="currentWindow = 'signIn';">Войти</a>
+          </b-col>
+          <b-col>   <a class="forgottenPassword" @click="currentWindow = 'registration';">Зарегистрироваться</a>
+          </b-col>
+        </b-row>
+
+        <b-row class="mt-5" v-show="state == loginedByUser">
+          <b-col>   <a class="forgottenPassword" @click="currentWindow = 'setIndaction';">Подать показания</a>
+          </b-col>
+          <b-col>   <a class="forgottenPassword" @click="btnShowIndaction(); currentWindow = 'showIndactions';">История показаний</a>
+          </b-col>
+        </b-row>
+
+        <div class="rectangle" v-show="currentWindow == 'signIn'">
+          <b-row>
+            <b-col class="title text-center">
+              Авторизация
+            </b-col>
+          </b-row>
+          <b-row class="rowInput">
+            <b-col cols="1">
+              <img src="/pub/img/user.svg" height="30px" width="30px" >
+            </b-col>
+            <b-col cols="5">
+              <input type="text" class="crmInput" name="login" id="login" value="" placeholder="Логин">
+            </b-col>
+          </b-row>
+          <b-row class="rowInput">
+            <b-col cols="1">
+              <img src="/pub/img/key.svg" height="30px" width="30px" >
+            </b-col>
+            <b-col cols="5">
+              <input type="text" class="crmInput" name="password" id="password" value="" placeholder="Пароль">
+            </b-col>
+          </b-row>
+
+          <b-row class="forgottenPassword">
+            <b-col>
+              <a target="_blank"> Забыли пароль</a>
+            </b-col>
+          </b-row>
+
+          <b-row>
+      			<b-col>
+      				<button type="button" class="signIn" @click="btnLogin">Войти</button>
+      			</b-col>
+      		</b-row>
+        </div>
+
+        <div class="indication" v-show="currentWindow == 'setIndaction'">
+          <b-row>
+            <b-col class="title text-center">
+              Показания
+            </b-col>
+          </b-row>
+          <b-row class="rowInput">
+            <b-col cols="1">
+              <img src="/pub/img/cold.svg" height="30px" width="30px" >
+            </b-col>
+            <b-col cols="5">
+              <input type="text" class="inputIndication" name="coldWater" id="coldWater" value="" placeholder="200.00">
+            </b-col>
+            <b-col cols="5">
+              <label for="coldWater">Холодное водоснабжение</label>
+            </b-col>
+          </b-row>
+
+          <b-row class="rowInput">
+            <b-col cols="1">
+              <img src="/pub/img/fire.svg" height="30px" width="30px" >
+            </b-col>
+            <b-col cols="5">
+              <input type="text" class="inputIndication" name="hotWater" id="hotWater" value="" placeholder="200.00">
+            </b-col>
+            <b-col cols="5">
+              <label for="hotWater">Горячее водоснабжение</label>
+            </b-col>
+          </b-row>
+
+          <b-row class="rowInput">
+            <b-col cols="1">
+              <img src="/pub/img/lightning.svg" height="30px" width="30px" >
+            </b-col>
+            <b-col cols="5">
+              <input type="text" class="inputIndication" name="light" id="light" value="" placeholder="200.00">
+            </b-col>
+            <b-col cols="5">
+              <label for="light">Электроснабжение</label>
+            </b-col>
+          </b-row>
+
+          <b-row>
+      			<b-col>
+      				<button type="button" class="setIndication" @click="btnSetIndaction">Передать показания</button>
+      			</b-col>
+      		</b-row>
+
+        </div>
+
+        <div class="registration" v-show="currentWindow == 'registration'">
+          <b-row>
+            <b-col class="title text-center">
+              Регистрация
+            </b-col>
+          </b-row>
+
+          <b-row class="rowInput">
+            <b-col cols="1">
+              <img src="/pub/img/user.svg" height="30px" width="30px" >
+            </b-col>
+            <b-col cols="5">
+              <input type="text" class="crmInput" name="login" id="reg_login" value="" placeholder="Логин">
+            </b-col>
+          </b-row>
+
+          <b-row class="rowInput">
+            <b-col cols="1">
+              <img src="/pub/img/key.svg" height="30px" width="30px" >
+            </b-col>
+            <b-col cols="5">
+              <input type="text" class="crmInput" name="password" id="reg_password" value="" placeholder="Пароль">
+            </b-col>
+          </b-row>
+
+          <b-row class="rowInput">
+            <b-col cols="1">
+              <img src="/pub/img/name.svg" height="30px" width="30px" >
+            </b-col>
+            <b-col cols="5">
+              <input type="text" class="crmInput" name="name" id="name" value="" placeholder="Имя">
+            </b-col>
+          </b-row>
+
+          <b-row class="rowInput">
+            <b-col cols="1">
+              <img src="/pub/img/surname.svg" height="30px" width="30px" >
+            </b-col>
+            <b-col cols="5">
+              <input type="text" class="crmInput" name="surname" id="surname" value="" placeholder="Фамилия">
+            </b-col>
+          </b-row>
+
+          <b-row class="rowInput">
+            <b-col cols="1">
+              <img src="/pub/img/adress.svg" height="30px" width="30px" >
+            </b-col>
+            <b-col cols="5">
+              <input type="text" class="crmInput" name="adress" id="adress" value="" placeholder="Адрес">
+            </b-col>
+          </b-row>
+
+
+          <b-row>
+      			<b-col>
+      				<button type="button" class="regButton" @click="btnRegist">Зарегистрироваться</button>
+      			</b-col>
+      		</b-row>
+
+        </div>
+
+
+        <div class="indication" v-show="currentWindow == 'showIndactions'">
+          <b-row>
+            <b-col class="title text-center">
+              Таблица показаний
+            </b-col>
+          </b-row>
+
+          <!-- demo root element -->
+          <form id="search">
+            Search <input name="query" v-model="searchQuery">
+          </form>
+          <demo-grid ref="indications_grid"
+                  :heroes="gridData"
+                  :columns="gridColumns"
+                  :filter-key="searchQuery">
+          </demo-grid>
+
+        </div>
+
+      </b-container>
+    </div>
+</body>
+</html>
+
+<script src="https://unpkg.com/@babel/polyfill@latest/dist/polyfill.min.js"></script>
+<script src="https://unpkg.com/vue@latest/dist/vue.min.js"></script>
+<script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="/js/constants.js"></script>
+<script src="/js/request-proxy.js"></script>
+<script src="/js/grid.js"></script>
+<script src="/js/vue-app.js"></script>
