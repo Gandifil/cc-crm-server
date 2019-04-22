@@ -1,17 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ad5c4326-cad4-428d-ae14-faaf0c0c512d" name="Default Changelist" comment="Feature addition and fixes&#10;&#10;+ Added user retrieval by their responsibility&#10;* Fixed admin request mappings">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_attoparser_attoparser_2_0_5_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_thymeleaf_2_1_2_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_thymeleaf_extras_thymeleaf_extras_java8time_3_0_2_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_thymeleaf_thymeleaf_3_0_11_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_thymeleaf_thymeleaf_spring5_3_0_11_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_unbescape_unbescape_1_1_6_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/sgu/csit/backend/controller/MainController.java" afterDir="false" />
+    <list default="true" id="ad5c4326-cad4-428d-ae14-faaf0c0c512d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/backend.iml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/backend.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.properties" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/backend/target/" />
@@ -25,86 +16,31 @@
     <option name="testRunner" value="GRADLE" />
     <option name="delegatedBuild" value="true" />
   </component>
-  <component name="FUSProjectUsageTrigger">
-    <session id="2037254804">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.closed" value="1" />
-          <entry key="project.open.time.26" value="1" />
-          <entry key="project.open.time.28" value="1" />
-          <entry key="project.opened" value="2" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="gitignore" value="4" />
-          <entry key="html" value="63" />
-          <entry key="java" value="2904" />
-          <entry key="properties" value="145" />
-          <entry key="xml" value="2" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="HTML" value="63" />
-          <entry key="JAVA" value="2904" />
-          <entry key="PLAIN_TEXT" value="4" />
-          <entry key="Properties" value="145" />
-          <entry key="XML" value="2" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="class" value="7" />
-          <entry key="gitignore" value="3" />
-          <entry key="html" value="3" />
-          <entry key="java" value="88" />
-          <entry key="js" value="2" />
-          <entry key="properties" value="2" />
-          <entry key="svg" value="2" />
-          <entry key="xml" value="1" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="CLASS" value="7" />
-          <entry key="HTML" value="3" />
-          <entry key="JAVA" value="88" />
-          <entry key="JavaScript" value="2" />
-          <entry key="PLAIN_TEXT" value="3" />
-          <entry key="Properties" value="2" />
-          <entry key="SVG" value="2" />
-          <entry key="XML" value="1" />
-        </counts>
-      </usages-collector>
-    </session>
-  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/backend/src/main/resources/templates/index.html">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/src/main/java/sgu/csit/backend/service/UserService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1452">
-              <caret line="66" column="33" selection-start-line="66" selection-start-column="33" selection-end-line="66" selection-end-column="33" />
+            <state relative-caret-position="480">
+              <caret line="43" column="6" selection-start-line="43" selection-start-column="6" selection-end-line="43" selection-end-column="6" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/backend/src/main/java/sgu/csit/backend/service/UserService.java">
+        <entry file="file://$PROJECT_DIR$/backend/src/main/resources/static/js/request-proxy.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="52" column="11" lean-forward="true" selection-start-line="52" selection-start-column="11" selection-end-line="52" selection-end-column="11" />
-              <folding>
-                <element signature="method#UserService#0;class#UserService#0" />
-                <element signature="method#login#0;class#UserService#0" />
-                <element signature="method#register#0;class#UserService#0" />
-                <element signature="method#refresh#0;class#UserService#0" />
-                <element signature="method#getActualMinOf#0;class#UserService#0" />
-                <element signature="method#getAllApartments#0;class#UserService#0" />
-                <element signature="method#notActual#0;class#UserService#0" />
-                <element signature="method#getBadApartments#0;class#UserService#0" />
-              </folding>
+            <state relative-caret-position="27">
+              <caret line="1" column="27" selection-start-line="1" selection-start-column="27" selection-end-line="1" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/backend/src/main/resources/application.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="201">
+              <caret line="8" column="43" lean-forward="true" selection-start-line="8" selection-start-column="43" selection-end-line="8" selection-end-column="43" />
             </state>
           </provider>
         </entry>
@@ -112,7 +48,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backend/src/main/java/sgu/csit/backend/auth/JwtAuthenticationRequest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
+            <state relative-caret-position="108">
               <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
             </state>
           </provider>
@@ -121,12 +57,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backend/src/main/java/sgu/csit/backend/service/MetersDataService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
+            <state relative-caret-position="378">
               <caret line="20" column="21" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
-              <folding>
-                <element signature="method#MetersDataService#0;class#MetersDataService#0" />
-                <element signature="method#getAllMetersDataByUserApart#0;class#MetersDataService#0" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -182,11 +114,12 @@
         <option value="$PROJECT_DIR$/backend/src/main/java/sgu/csit/backend/model/User.java" />
         <option value="$PROJECT_DIR$/backend/src/main/java/sgu/csit/backend/service/UserService.java" />
         <option value="$PROJECT_DIR$/backend/src/main/java/sgu/csit/backend/controller/MetersDataController.java" />
-        <option value="$PROJECT_DIR$/backend/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/backend/src/main/resources/public/index.html" />
         <option value="$PROJECT_DIR$/backend/pom.xml" />
         <option value="$PROJECT_DIR$/backend/src/main/resources/templates/index.html" />
         <option value="$PROJECT_DIR$/backend/src/main/java/sgu/csit/backend/controller/MainController.java" />
+        <option value="$PROJECT_DIR$/backend/src/main/resources/static/js/request-proxy.js" />
+        <option value="$PROJECT_DIR$/backend/src/main/resources/application.properties" />
       </list>
     </option>
   </component>
@@ -225,6 +158,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -299,7 +233,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="pub" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="cc-crm-server" type="b2602c69:ProjectViewProjectNode" />
@@ -313,7 +247,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -347,7 +280,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.Application">
+  <component name="RunManager" selected="JUnit.All in backend">
     <configuration name="All in backend (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="backend" />
       <option name="PACKAGE_NAME" value="" />
@@ -380,11 +313,9 @@
     <list>
       <item itemvalue="JUnit.All in backend" />
       <item itemvalue="JUnit.All in backend (1)" />
-      <item itemvalue="Spring Boot.Application" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.Application" />
         <item itemvalue="JUnit.All in backend (1)" />
         <item itemvalue="JUnit.All in backend" />
       </list>
@@ -428,7 +359,14 @@
       <option name="project" value="LOCAL" />
       <updated>1553724659985</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="+ Fix server endpoint on domain.host">
+      <created>1555952981288</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1555952981289</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -444,10 +382,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="27" width="1920" height="1053" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22702992" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22921109" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -534,15 +472,13 @@
       </list>
     </option>
   </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
-  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added period type enum" />
     <MESSAGE value="enum and entity response refactor" />
     <MESSAGE value="pre-final meters data API and roles restrictions" />
     <MESSAGE value="Feature addition and fixes&#10;&#10;+ Added user retrieval by their responsibility&#10;* Fixed admin request mappings" />
-    <option name="LAST_COMMIT_MESSAGE" value="Feature addition and fixes&#10;&#10;+ Added user retrieval by their responsibility&#10;* Fixed admin request mappings" />
+    <MESSAGE value="+ Fix server endpoint on domain.host" />
+    <option name="LAST_COMMIT_MESSAGE" value="+ Fix server endpoint on domain.host" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
@@ -554,7 +490,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/backend/src/main/java/sgu/csit/backend/controller/CorsController.java" />
     <entry file="file://$PROJECT_DIR$/backend/src/main/java/sgu/csit/backend/controller/MethodProtectedController.java" />
     <entry file="jar://D:/Program Files/Java/jdk1.8.0_162/src.zip!/java/net/URLClassLoader.java" />
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/5.1.4.RELEASE/spring-aop-5.1.4.RELEASE.jar!/org/springframework/aop/framework/CglibAopProxy.class">
@@ -642,13 +577,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/javax/validation/validation-api/2.0.1.Final/validation-api-2.0.1.Final-sources.jar!/javax/validation/constraints/Size.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="45" column="18" selection-start-line="45" selection-start-column="18" selection-end-line="45" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/javax/validation/validation-api/2.0.1.Final/validation-api-2.0.1.Final-sources.jar!/javax/validation/constraints/Size.java" />
     <entry file="file://$PROJECT_DIR$/backend/src/main/java/sgu/csit/backend/model/AuthorityType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="66">
@@ -711,278 +640,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar:///usr/lib/jvm/jdk-11/lib/src.zip!/java.base/java/util/Calendar.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="536">
-          <caret line="1783" column="22" selection-start-line="1783" selection-start-column="22" selection-end-line="1783" selection-end-column="22" />
-          <folding>
-            <element signature="docComment;class#Calendar#0" />
-            <element signature="e#14925#14949#0" />
-            <element signature="e#17277#17559#0" />
-            <element signature="e#17602#17766#0" />
-            <element signature="e#17810#18395#0" />
-            <element signature="e#18440#18914#0" />
-            <element signature="e#18966#19444#0" />
-            <element signature="e#19497#19739#0" />
-            <element signature="e#19783#20009#0" />
-            <element signature="e#20061#20232#0" />
-            <element signature="e#20283#20748#0" />
-            <element signature="e#20799#22164#0" />
-            <element signature="e#22224#22502#0" />
-            <element signature="e#22547#22904#0" />
-            <element signature="e#22949#23210#0" />
-            <element signature="e#23262#23443#0" />
-            <element signature="e#23490#23674#0" />
-            <element signature="e#23721#23916#0" />
-            <element signature="e#23968#24328#0" />
-            <element signature="e#24380#24774#0" />
-            <element signature="e#24825#24989#0" />
-            <element signature="e#25041#25125#0" />
-            <element signature="e#25171#25255#0" />
-            <element signature="e#25301#25386#0" />
-            <element signature="e#25433#25520#0" />
-            <element signature="e#25569#25655#0" />
-            <element signature="e#25703#25787#0" />
-            <element signature="e#25833#25919#0" />
-            <element signature="e#25967#26104#0" />
-            <element signature="e#26151#26289#0" />
-            <element signature="e#26337#26474#0" />
-            <element signature="e#26519#26657#0" />
-            <element signature="e#26702#26839#0" />
-            <element signature="e#26882#27019#0" />
-            <element signature="e#27063#27202#0" />
-            <element signature="e#27246#27384#0" />
-            <element signature="e#27430#27567#0" />
-            <element signature="e#27616#27753#0" />
-            <element signature="e#27800#27940#0" />
-            <element signature="e#27989#28128#0" />
-            <element signature="e#28177#28373#0" />
-            <element signature="e#28424#28551#0" />
-            <element signature="e#28593#28720#0" />
-            <element signature="e#28762#29108#0" />
-            <element signature="e#29206#29490#0" />
-            <element signature="e#29535#29818#0" />
-            <element signature="e#29862#30269#0" />
-            <element signature="e#30322#30731#0" />
-            <element signature="e#30818#31142#0" />
-            <element signature="e#31194#31518#0" />
-            <element signature="e#31569#31949#0" />
-            <element signature="e#32027#32399#0" />
-            <element signature="e#32475#32493#0" />
-            <element signature="e#33092#33334#0" />
-            <element signature="e#33418#33804#0" />
-            <element signature="e#33887#34104#0" />
-            <element signature="e#34147#34314#0" />
-            <element signature="e#34394#34579#0" />
-            <element signature="e#34664#34935#0" />
-            <element signature="e#35023#35090#0" />
-            <element signature="e#35141#35364#0" />
-            <element signature="e#35414#35591#0" />
-            <element signature="e#35631#35715#0" />
-            <element signature="e#35771#35941#0" />
-            <element signature="e#35991#36167#0" />
-            <element signature="e#36225#36323#0" />
-            <element signature="e#36471#36530#0" />
-            <element signature="e#36583#36673#0" />
-            <element signature="e#36729#36940#0" />
-            <element signature="e#37006#37074#0" />
-            <element signature="e#37138#37459#0" />
-            <element signature="e#38097#38696#0" />
-            <element signature="e#40087#42680#0" />
-            <element signature="e#40087#64925#0" />
-            <element signature="e#43518#43583#0" />
-            <element signature="e#43518#43620#0" />
-            <element signature="e#43630#44192#0" />
-            <element signature="e#43630#44446#0" />
-            <element signature="e#44456#45184#0" />
-            <element signature="e#45330#46294#0" />
-            <element signature="e#45330#46771#0" />
-            <element signature="e#46781#47950#0" />
-            <element signature="e#46781#48857#0" />
-            <element signature="e#48867#49582#0" />
-            <element signature="e#48867#49744#0" />
-            <element signature="e#49754#50359#0" />
-            <element signature="e#49754#50509#0" />
-            <element signature="e#50519#51368#0" />
-            <element signature="e#50519#51603#0" />
-            <element signature="e#51613#52452#0" />
-            <element signature="e#51613#52745#0" />
-            <element signature="e#52755#53293#0" />
-            <element signature="e#52755#53506#0" />
-            <element signature="e#53516#53989#0" />
-            <element signature="e#53516#54113#0" />
-            <element signature="e#54123#55130#0" />
-            <element signature="e#54123#55803#0" />
-            <element signature="e#55813#56822#0" />
-            <element signature="e#55813#57039#0" />
-            <element signature="e#57049#58070#0" />
-            <element signature="e#57049#58506#0" />
-            <element signature="e#58516#60732#0" />
-            <element signature="e#58516#63977#0" />
-            <element signature="e#63004#63065#0" />
-            <element signature="e#63987#64207#0" />
-            <element signature="e#64217#64598#0" />
-            <element signature="e#64931#65120#0" />
-            <element signature="e#64931#65267#0" />
-            <element signature="e#65273#65452#0" />
-            <element signature="e#65273#65699#0" />
-            <element signature="e#65705#66163#0" />
-            <element signature="e#65705#66350#0" />
-            <element signature="e#66356#66685#0" />
-            <element signature="e#66356#66831#0" />
-            <element signature="e#66837#67309#0" />
-            <element signature="e#67448#67772#0" />
-            <element signature="e#67448#67939#0" />
-            <element signature="e#67945#68312#0" />
-            <element signature="e#68318#70371#0" />
-            <element signature="e#69512#69565#0" />
-            <element signature="e#70377#70785#0" />
-            <element signature="e#70914#71122#0" />
-            <element signature="e#71171#71590#0" />
-            <element signature="e#71641#71949#0" />
-            <element signature="e#71982#71983#0" expanded="true" />
-            <element signature="e#72032#72033#0" expanded="true" />
-            <element signature="e#72039#72420#0" />
-            <element signature="e#72516#72719#0" />
-            <element signature="e#72516#72844#0" />
-            <element signature="e#72850#73064#0" />
-            <element signature="e#72850#73542#0" />
-            <element signature="e#73120#73181#0" />
-            <element signature="e#73548#74290#0" />
-            <element signature="e#73548#74387#0" />
-            <element signature="e#74393#74672#0" />
-            <element signature="e#74767#75208#0" />
-            <element signature="e#75306#75901#0" />
-            <element signature="e#75306#76397#0" />
-            <element signature="e#75958#76018#0" />
-            <element signature="e#76403#77073#0" />
-            <element signature="e#76403#77219#0" />
-            <element signature="e#77225#78106#0" />
-            <element signature="e#77225#78345#0" />
-            <element signature="e#78351#79323#0" />
-            <element signature="e#78351#79629#0" />
-            <element signature="e#79635#80311#0" />
-            <element signature="e#79635#80569#0" />
-            <element signature="e#80575#81579#0" />
-            <element signature="e#80575#81793#0" />
-            <element signature="e#81799#82177#0" />
-            <element signature="e#82275#84455#0" />
-            <element signature="e#82275#86566#0" />
-            <element signature="e#84818#84890#0" />
-            <element signature="e#86572#89075#0" />
-            <element signature="e#86572#90387#0" />
-            <element signature="e#90393#90979#0" />
-            <element signature="e#90985#91533#0" />
-            <element signature="e#91539#92377#0" />
-            <element signature="e#92383#92749#0" />
-            <element signature="e#92383#93017#0" />
-            <element signature="e#93023#93594#0" />
-            <element signature="e#93704#93906#0" />
-            <element signature="e#93704#94134#0" />
-            <element signature="e#94140#94741#0" />
-            <element signature="e#94140#95446#0" />
-            <element signature="e#95452#96201#0" />
-            <element signature="e#95452#96760#0" />
-            <element signature="e#96573#96622#0" />
-            <element signature="e#96766#96931#0" />
-            <element signature="e#97036#97136#0" />
-            <element signature="e#97236#97289#0" />
-            <element signature="e#97384#97495#0" />
-            <element signature="e#97613#98666#0" />
-            <element signature="e#97613#104706#0" />
-            <element signature="e#98706#98777#0" />
-            <element signature="e#99147#99212#0" />
-            <element signature="e#102041#102085#0" />
-            <element signature="e#103303#103368#0" />
-            <element signature="e#105215#105465#0" />
-            <element signature="e#105215#105681#0" />
-            <element signature="e#105687#106389#0" />
-            <element signature="e#106504#106879#0" />
-            <element signature="e#106604#106820#0" />
-            <element signature="e#106829#106873#0" />
-            <element signature="e#106885#107655#0" />
-            <element signature="e#107747#108816#0" />
-            <element signature="e#108821#108878#0" />
-            <element signature="e#107747#109558#0" />
-            <element signature="e#109365#109410#0" />
-            <element signature="e#109564#109696#0" />
-            <element signature="e#109564#110071#0" />
-            <element signature="e#110077#110743#0" />
-            <element signature="e#110077#110876#0" />
-            <element signature="e#110882#111546#0" />
-            <element signature="e#110882#111678#0" />
-            <element signature="e#111684#112672#0" />
-            <element signature="e#112807#113277#0" />
-            <element signature="e#113336#114422#0" />
-            <element signature="e#114482#115419#0" />
-            <element signature="e#114482#115660#0" />
-            <element signature="e#115666#115783#0" />
-            <element signature="e#115666#116553#0" />
-            <element signature="e#116559#116671#0" />
-            <element signature="e#116559#116955#0" />
-            <element signature="e#116720#116789#0" />
-            <element signature="e#116961#117020#0" />
-            <element signature="e#117078#117145#0" />
-            <element signature="e#117227#117808#0" />
-            <element signature="e#117902#118143#0" />
-            <element signature="e#118216#118485#0" />
-            <element signature="e#118216#118675#0" />
-            <element signature="e#118681#118942#0" />
-            <element signature="e#119026#119452#0" />
-            <element signature="e#119026#119666#0" />
-            <element signature="e#119672#120108#0" />
-            <element signature="e#120208#120605#0" />
-            <element signature="e#120682#121384#0" />
-            <element signature="e#121478#122968#0" />
-            <element signature="e#123106#123683#0" />
-            <element signature="e#123784#124413#0" />
-            <element signature="e#124466#125093#0" />
-            <element signature="e#125146#125803#0" />
-            <element signature="e#125864#126770#0" />
-            <element signature="e#126828#127643#0" />
-            <element signature="e#127952#128023#0" />
-            <element signature="e#128160#128237#0" />
-            <element signature="e#128733#129640#0" />
-            <element signature="e#128733#131012#0" />
-            <element signature="e#129947#130018#0" />
-            <element signature="e#130156#130231#0" />
-            <element signature="e#130445#130522#0" />
-            <element signature="e#131018#131124#0" />
-            <element signature="e#131018#131836#0" />
-            <element signature="e#132153#132438#0" />
-            <element signature="e#132528#132884#0" />
-            <element signature="e#132528#133980#0" />
-            <element signature="e#132938#132996#0" />
-            <element signature="e#134057#134297#0" />
-            <element signature="e#134303#134583#0" />
-            <element signature="e#134303#135161#0" />
-            <element signature="e#135167#135358#0" />
-            <element signature="e#135167#135554#0" />
-            <element signature="e#135422#135482#0" />
-            <element signature="e#135560#135702#0" />
-            <element signature="e#135708#135964#0" />
-            <element signature="e#135970#136107#0" />
-            <element signature="e#135970#136900#0" />
-            <element signature="e#136906#137062#0" />
-            <element signature="e#136906#138061#0" />
-            <element signature="e#137243#137308#0" />
-            <element signature="e#138067#138804#0" />
-            <element signature="e#138067#140064#0" />
-            <element signature="e#138916#138976#0" />
-            <element signature="e#139205#139258#0" />
-            <element signature="e#139784#139816#0" />
-            <element signature="e#140070#140688#0" />
-            <element signature="e#140190#140623#0" />
-            <element signature="e#140632#140682#0" />
-            <element signature="e#140694#140776#0" />
-            <element signature="e#140694#143354#0" />
-            <element signature="e#141020#141084#0" />
-            <element signature="e#142848#142906#0" />
-            <element signature="e#143360#143660#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar:///usr/lib/jvm/jdk-11/lib/src.zip!/java.base/java/util/Calendar.java" />
     <entry file="file://$PROJECT_DIR$/backend/src/main/java/sgu/csit/backend/controller/RegistrationController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="528">
@@ -998,13 +656,6 @@
             <element signature="e#842#857#1" expanded="true" />
             <element signature="method#ManageController#0;class#ManageController#0" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="3" column="26" selection-start-line="3" selection-start-column="26" selection-end-line="3" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -1026,16 +677,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/src/main/resources/public/js/vue-app.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/src/main/resources/public/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="69" column="20" lean-forward="true" selection-start-line="69" selection-start-column="20" selection-end-line="69" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/src/main/resources/public/js/vue-app.js" />
+    <entry file="file://$PROJECT_DIR$/backend/src/main/resources/public/index.html" />
     <entry file="file://$PROJECT_DIR$/backend/src/main/java/sgu/csit/backend/config/WebSecurityConfig.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1975">
@@ -1071,9 +714,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/src/main/resources/static/user.svg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/src/main/resources/static/user.svg" />
     <entry file="file://$PROJECT_DIR$/backend/src/main/java/sgu/csit/backend/auth/JwtAuthorizationTokenFilter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-220">
@@ -1081,54 +722,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/src/main/resources/static/js/vue-app.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/src/main/java/sgu/csit/backend/controller/MainController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="1" lean-forward="true" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/src/main/java/sgu/csit/backend/auth/JwtAuthenticationRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/src/main/java/sgu/csit/backend/service/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="52" column="11" lean-forward="true" selection-start-line="52" selection-start-column="11" selection-end-line="52" selection-end-column="11" />
-          <folding>
-            <element signature="method#UserService#0;class#UserService#0" />
-            <element signature="method#login#0;class#UserService#0" />
-            <element signature="method#register#0;class#UserService#0" />
-            <element signature="method#refresh#0;class#UserService#0" />
-            <element signature="method#getActualMinOf#0;class#UserService#0" />
-            <element signature="method#getAllApartments#0;class#UserService#0" />
-            <element signature="method#notActual#0;class#UserService#0" />
-            <element signature="method#getBadApartments#0;class#UserService#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/src/main/java/sgu/csit/backend/service/MetersDataService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="20" column="21" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
-          <folding>
-            <element signature="method#MetersDataService#0;class#MetersDataService#0" />
-            <element signature="method#getAllMetersDataByUserApart#0;class#MetersDataService#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/src/main/resources/static/js/vue-app.js" />
+    <entry file="file://$PROJECT_DIR$/backend/src/main/java/sgu/csit/backend/controller/MainController.java" />
     <entry file="file://$PROJECT_DIR$/backend/src/main/java/sgu/csit/backend/auth/JwtAuthenticationEntryPoint.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="110">
@@ -1183,10 +778,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/src/main/resources/templates/index.html">
+    <entry file="file://$PROJECT_DIR$/backend/src/main/resources/templates/index.html" />
+    <entry file="file://$PROJECT_DIR$/backend/src/main/java/sgu/csit/backend/service/UserService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1452">
-          <caret line="66" column="33" selection-start-line="66" selection-start-column="33" selection-end-line="66" selection-end-column="33" />
+        <state relative-caret-position="480">
+          <caret line="43" column="6" selection-start-line="43" selection-start-column="6" selection-end-line="43" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/src/main/java/sgu/csit/backend/auth/JwtAuthenticationRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/src/main/java/sgu/csit/backend/service/MetersDataService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="20" column="21" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/src/main/resources/static/js/request-proxy.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="27">
+          <caret line="1" column="27" selection-start-line="1" selection-start-column="27" selection-end-line="1" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="8" column="43" lean-forward="true" selection-start-line="8" selection-start-column="43" selection-end-line="8" selection-end-column="43" />
         </state>
       </provider>
     </entry>
