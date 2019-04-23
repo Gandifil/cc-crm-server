@@ -11,12 +11,57 @@ window.app = new Vue({
             currentWindow: 'signIn',
             token: '',
         },
+    mounted() {
+      if (localStorage.searchQuery) {
+        this.searchQuery = localStorage.searchQuery;
+      }
+      if (localStorage.gridColumns) {
+        this.gridColumns = localStorage.gridColumns;
+      }
+      if (localStorage.gridData) {
+        this.gridData = localStorage.gridData;
+      }
+      if (localStorage.state) {
+        this.state = localStorage.state;
+      }
+      if (localStorage.currentWindow) {
+        this.currentWindow = localStorage.currentWindow;
+      }
+      if (localStorage.token) {
+        this.token = localStorage.token;
+      }
+    },
+    watch: {
+      searchQuery(newsearchQuery) {
+        localStorage.searchQuery = newsearchQuery;
+      },
+      gridColumns(newgridColumns) {
+        localStorage.gridColumns = newgridColumns;
+      },
+      gridData(newgridData) {
+        localStorage.gridData = newgridData;
+      },
+      state(newstate) {
+        localStorage.state = newstate;
+      },
+      currentWindow(newcurrentWindow) {
+        localStorage.currentWindow = newcurrentWindow;
+      },
+      token(newtoken) {
+        localStorage.token = newtoken;
+      }
+    },
     methods: {
         btnRegist: function (event) {
             requestProxy('/auth/register', {
                 username: document.getElementById("reg_login").value,
                 password: document.getElementById("reg_password").value,
-                phoneNumber: '231312314',
+                firstName: document.getElementById("reg_name").value,
+                lastName: document.getElementById("reg_surname").value,
+                middleName: document.getElementById("reg_sname").value,
+                apartment: document.getElementById("reg_adress").value,
+                phoneNumber: document.getElementById("reg_phone").value,
+                email: document.getElementById("reg_email").value,
             },response => { alert('удачно');}, x => {alert('ошибка'); });
         },
 
