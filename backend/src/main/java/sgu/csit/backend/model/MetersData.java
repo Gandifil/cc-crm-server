@@ -26,7 +26,6 @@ public class MetersData {
     @Column(name = "date")
     private Date date;
 
-    @JsonIgnore
     @ManyToOne
     @JoinColumn
     private User user;

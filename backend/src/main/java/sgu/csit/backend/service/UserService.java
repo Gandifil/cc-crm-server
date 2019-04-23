@@ -10,6 +10,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import sgu.csit.backend.auth.JwtTokenUtil;
+import sgu.csit.backend.dto.MetersDataDTO;
+import sgu.csit.backend.dto.UserDTO;
 import sgu.csit.backend.exception.AuthenticationException;
 import sgu.csit.backend.exception.RegistrationException;
 import sgu.csit.backend.model.*;
@@ -119,11 +121,10 @@ public class UserService {
         }
         return calendar;
     }
-
-    public Map<Integer, Set<MetersData>> getAllApartments(PeriodType periodType) {
+    public Map<Integer, Set<MetersDataDTO>> getAllApartments(PeriodType periodType) {
         Calendar calendar = getActualMinOf(periodType);
 
-        Map<Integer, Set<MetersData>> apartments = new HashMap<>();
+        Map<Integer, Set<MetersDataDTO>> apartments = new HashMap<>();
         for (User user : userRepository.findAll()) {
             Integer apartment = user.getApartment();
             if (apartment == 0)
@@ -133,30 +134,29 @@ public class UserService {
                                                 .filter(md -> md.getDate().after(calendar.getTime()))
                                                 .collect(Collectors.toSet());
             if (apartments.containsKey(apartment))
-                apartments.get(apartment).addAll(metersData);
+                apartments.get(apartment).addAll(MetersDataDTO.toDTO(metersData));
             else
-                apartments.put(apartment, metersData);
+                apartments.put(apartment, MetersDataDTO.toDTO(metersData));
         }
 
         return apartments;
     }
 
-    private boolean notActual(Set<MetersData> metersData, Date date) {
-        for (MetersData md : metersData)
+    private boolean notActual(Set<MetersDataDTO> metersData, Date date) {
+        for (MetersDataDTO md : metersData)
             if (md.getDate().after(date))
                 return false;
         return true;
     }
-
-    public Map<Integer, Set<User>> getBadApartments(PeriodType periodType) {
+    public Map<Integer, Set<UserDTO>> getBadApartments(PeriodType periodType) {
         Calendar calendar = getActualMinOf(periodType);
 
-        Map<Integer, Set<User>> badApartments = new HashMap<>();
-        Map<Integer, Set<MetersData>> apartments = getAllApartments(PeriodType.ALL);
+        Map<Integer, Set<UserDTO>> badApartments = new HashMap<>();
+        Map<Integer, Set<MetersDataDTO>> apartments = getAllApartments(PeriodType.ALL);
         for (Integer apartment : apartments.keySet())
             if (notActual(apartments.get(apartment), calendar.getTime()) && apartment != 0) {
                 Set<User> badUsers = userRepository.findAllByApartment(apartment);
-                badApartments.put(apartment, badUsers);
+                badApartments.put(apartment, UserDTO.toDTO(badUsers));
             }
 
         return badApartments;

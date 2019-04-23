@@ -8,6 +8,8 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.*;
 import sgu.csit.backend.auth.JwtTokenUtil;
+import sgu.csit.backend.dto.MetersDataDTO;
+import sgu.csit.backend.dto.UserDTO;
 import sgu.csit.backend.model.MetersData;
 import sgu.csit.backend.model.PeriodType;
 import sgu.csit.backend.model.User;
@@ -42,26 +44,26 @@ public class ManageController {
     }
 
     // meters by user's apartment
-    @RequestMapping(value = "/meters/{userApart}", method = RequestMethod.GET)
+    @RequestMapping(value = "/aparts/{userApart}", method = RequestMethod.GET)
     public ResponseEntity getAllMetersData(
             @RequestParam("periodType") PeriodType periodType,
             @PathVariable("userApart") Integer userApart
     ) {
-        Iterable<MetersData> metersData = metersDataService.getAllMetersDataByUserApart(periodType, userApart);
+        Set<MetersDataDTO> metersData = metersDataService.getAllMetersDataByUserApart(periodType, userApart);
         return ResponseEntity.ok(metersData);
     }
 
     // all apartments with meters
-    @RequestMapping(value = "/meters/", method = RequestMethod.GET)
+    @RequestMapping(value = "/aparts/", method = RequestMethod.GET)
     public ResponseEntity getAllApartments(@RequestParam("periodType") PeriodType periodType) {
-        Map<Integer, Set<MetersData>> apartments = userService.getAllApartments(periodType);
+        Map<Integer, Set<MetersDataDTO>> apartments = userService.getAllApartments(periodType);
         return ResponseEntity.ok(apartments);
     }
 
     // bad apartments with users
-    @RequestMapping(value = "/users/", method = RequestMethod.GET)
+    @RequestMapping(value = "/bad_aparts/", method = RequestMethod.GET)
     public ResponseEntity getBadApartments(@RequestParam("periodType") PeriodType periodType) {
-        Map<Integer, Set<User>> badApartments = userService.getBadApartments(periodType);
+        Map<Integer, Set<UserDTO>> badApartments = userService.getBadApartments(periodType);
         return ResponseEntity.ok(badApartments);
     }
 
