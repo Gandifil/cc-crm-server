@@ -16,7 +16,11 @@ window.app = new Vue({
             requestProxy('/auth/register', {
                 username: document.getElementById("reg_login").value,
                 password: document.getElementById("reg_password").value,
-                phoneNumber: '231312314',
+                firstName: document.getElementById("reg_name").value,
+                lastName: document.getElementById("reg_surname").value,
+                middleName: document.getElementById("reg_sname").value,
+                apartment: document.getElementById("reg_adress").value,
+                phoneNumber: document.getElementById("reg_phone").value,
             },response => { alert('удачно');}, x => {alert('ошибка'); });
         },
 
