@@ -9,6 +9,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.*;
 import sgu.csit.backend.auth.JwtTokenUtil;
+import sgu.csit.backend.dto.MetersDataDTO;
 import sgu.csit.backend.model.MetersData;
 import sgu.csit.backend.model.PeriodType;
 import sgu.csit.backend.security.JwtUser;
@@ -16,6 +17,7 @@ import sgu.csit.backend.service.MetersDataService;
 import sgu.csit.backend.service.UserService;
 
 import java.util.Date;
+import java.util.Set;
 
 @RestController
 @PreAuthorize("hasRole({'USER'})")
@@ -59,7 +61,7 @@ public class MetersDataController {
             @AuthenticationPrincipal JwtUser user,
             @RequestParam("periodType") PeriodType periodType
     ) {
-        Iterable<MetersData> metersData =
+        Set<MetersDataDTO> metersData =
             metersDataService.getAllMetersDataByUserApart(periodType, user.getApartment());
         return ResponseEntity.ok(metersData);
     }

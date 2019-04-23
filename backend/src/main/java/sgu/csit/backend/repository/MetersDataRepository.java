@@ -5,12 +5,10 @@ import org.springframework.stereotype.Repository;
 import sgu.csit.backend.model.MetersData;
 
 import java.util.Date;
-import java.util.List;
+import java.util.Set;
 
 @Repository
 public interface MetersDataRepository extends JpaRepository<MetersData, Long> {
-    Iterable<MetersData> findByUser_Apartment(Integer userApart);
-    Iterable<MetersData> findByDateAfter(Date date);
-    Iterable<MetersData> findByDateAfterAndUser_Apartment(Date date, Integer userApart);
-    Iterable<MetersData> findByDateBefore(Date date);
+    Set<MetersData> findByUser_Apartment(Integer userApart);
+    Set<MetersData> findByDateAfterAndUser_Apartment(Date date, Integer userApart);
 }
