@@ -61,6 +61,7 @@ window.app = new Vue({
                 middleName: document.getElementById("reg_sname").value,
                 apartment: document.getElementById("reg_adress").value,
                 phoneNumber: document.getElementById("reg_phone").value,
+                email: document.getElementById("reg_email").value,
             },response => { alert('удачно');}, x => {alert('ошибка'); });
         },
 
