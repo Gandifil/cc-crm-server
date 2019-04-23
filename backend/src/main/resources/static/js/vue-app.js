@@ -11,6 +11,46 @@ window.app = new Vue({
             currentWindow: 'signIn',
             token: '',
         },
+    mounted() {
+      if (localStorage.searchQuery) {
+        this.searchQuery = localStorage.searchQuery;
+      }
+      if (localStorage.gridColumns) {
+        this.gridColumns = localStorage.gridColumns;
+      }
+      if (localStorage.gridData) {
+        this.gridData = localStorage.gridData;
+      }
+      if (localStorage.state) {
+        this.state = localStorage.state;
+      }
+      if (localStorage.currentWindow) {
+        this.currentWindow = localStorage.currentWindow;
+      }
+      if (localStorage.token) {
+        this.token = localStorage.token;
+      }
+    },
+    watch: {
+      searchQuery(newsearchQuery) {
+        localStorage.searchQuery = newsearchQuery;
+      },
+      gridColumns(newgridColumns) {
+        localStorage.gridColumns = newgridColumns;
+      },
+      gridData(newgridData) {
+        localStorage.gridData = newgridData;
+      },
+      state(newstate) {
+        localStorage.state = newstate;
+      },
+      currentWindow(newcurrentWindow) {
+        localStorage.currentWindow = newcurrentWindow;
+      },
+      token(newtoken) {
+        localStorage.token = newtoken;
+      }
+    },
     methods: {
         btnRegist: function (event) {
             requestProxy('/auth/register', {
