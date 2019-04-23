@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import sgu.csit.backend.auth.JwtTokenUtil;
 import sgu.csit.backend.dto.MetersDataDTO;
 import sgu.csit.backend.dto.UserDTO;
-import sgu.csit.backend.model.MetersData;
 import sgu.csit.backend.model.PeriodType;
-import sgu.csit.backend.model.User;
 import sgu.csit.backend.service.MetersDataService;
 import sgu.csit.backend.service.UserService;
 
@@ -45,11 +43,11 @@ public class ManageController {
 
     // meters by user's apartment
     @RequestMapping(value = "/aparts/{userApart}", method = RequestMethod.GET)
-    public ResponseEntity getAllMetersData(
+    public ResponseEntity getApartment(
             @RequestParam("periodType") PeriodType periodType,
             @PathVariable("userApart") Integer userApart
     ) {
-        Set<MetersDataDTO> metersData = metersDataService.getAllMetersDataByUserApart(periodType, userApart);
+        Set<MetersDataDTO> metersData = metersDataService.getApartment(userApart, periodType);
         return ResponseEntity.ok(metersData);
     }
 

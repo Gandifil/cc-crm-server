@@ -1,5 +1,5 @@
 // server endpoint
-const server = 'http://localhost:8080';
+const server = location.host;
 
 function requestProxy(subPath, body, process, error, token = null){
     let headers ={

@@ -62,7 +62,7 @@ public class MetersDataController {
             @RequestParam("periodType") PeriodType periodType
     ) {
         Set<MetersDataDTO> metersData =
-            metersDataService.getAllMetersDataByUserApart(periodType, user.getApartment());
+            metersDataService.getApartment(user.getApartment(), periodType);
         return ResponseEntity.ok(metersData);
     }
 }

@@ -25,23 +25,23 @@ public class MetersDataService {
     }
 
     // retrieval
-    public Set<MetersDataDTO> getAllMetersDataByUserApart(PeriodType periodType, Integer userApart) {
+    public Set<MetersDataDTO> getApartment(Integer apartment, PeriodType periodType) {
         Set<MetersDataDTO> metersData;
         switch (periodType) {
             case CURRENT_MONTH:
                 Calendar calendar = Calendar.getInstance();
                 calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMinimum((Calendar.DAY_OF_MONTH)));
                 metersData = MetersDataDTO.toDTO(metersDataRepository.
-                                    findByDateAfterAndUser_Apartment(calendar.getTime(), userApart));
+                                    findByDateAfterAndUser_Apartment(calendar.getTime(), apartment));
                 break;
             case CURRENT_YEAR:
                 calendar = Calendar.getInstance();
                 calendar.set(Calendar.DAY_OF_YEAR, calendar.getActualMinimum((Calendar.DAY_OF_MONTH)));
                 metersData = MetersDataDTO.toDTO(metersDataRepository.
-                                    findByDateAfterAndUser_Apartment(calendar.getTime(), userApart));
+                                    findByDateAfterAndUser_Apartment(calendar.getTime(), apartment));
                 break;
             case ALL:
-                metersData = MetersDataDTO.toDTO(metersDataRepository.findByUser_Apartment(userApart));
+                metersData = MetersDataDTO.toDTO(metersDataRepository.findByUser_Apartment(apartment));
                 break;
             default:
                 return null;
