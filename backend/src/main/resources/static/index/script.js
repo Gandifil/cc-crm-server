@@ -1,6 +1,7 @@
 //-share------------------------------------------------------------------------------
 // consts
-const serverURL = "http://localhost:8080/";
+// const serverURL = "http://localhost:8080/";
+const serverURL = "http://" + location.host + "/";
 const userAccountURL = "user_index.html";
 // proxy functions
 function makePost(subPath, body, succHandler, errHandler, token = null) {

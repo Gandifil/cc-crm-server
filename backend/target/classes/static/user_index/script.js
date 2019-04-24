@@ -1,6 +1,7 @@
 //-share------------------------------------------------------------------------------
 // consts
-const serverURL = "http://localhost:8080/";
+// const serverURL = "http://localhost:8080/";
+const serverURL = "http://" + location.host + "/";
 const indexURL = "/";
 const parMap = {
     "all": "periodType=ALL",

@@ -3,22 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="9da519fe-55ea-4c0f-95cd-dc7ca5f9fbd0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/css/grid.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/js/constants.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/js/grid.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/js/request-proxy.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/js/vue-app.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/pub/img/adress.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/pub/img/cold.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/pub/img/fire.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/pub/img/key.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/pub/img/lightning.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/pub/img/name.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/pub/img/surname.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/pub/img/user.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/pub/img/user.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/pub/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/index/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/static/index/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/user_index/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/static/user_index/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/static/index/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/static/index/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/static/user_index/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/static/user_index/script.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/backend/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -68,11 +56,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/backend/src/main/resources/application.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="3" column="37" selection-start-line="3" selection-start-column="37" selection-end-line="3" selection-end-column="37" />
+            <state relative-caret-position="110">
+              <caret line="5" column="9" lean-forward="true" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -101,10 +89,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backend/src/main/java/sgu/csit/backend/controller/MetersDataController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-506">
+            <state relative-caret-position="88">
               <caret line="22" column="12" lean-forward="true" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="12" />
               <folding>
                 <element signature="method#MetersDataController#0;class#MetersDataController#0" />
@@ -153,7 +141,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/backend/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/backend/src/main/resources/static/js/request-proxy.js" />
         <option value="$PROJECT_DIR$/backend/src/main/java/sgu/csit/backend/service/MetersDataService.java" />
         <option value="$PROJECT_DIR$/backend/src/main/java/sgu/csit/backend/repository/MetersDataRepository.java" />
@@ -165,6 +152,7 @@
         <option value="$PROJECT_DIR$/backend/src/main/java/sgu/csit/backend/service/UserService.java" />
         <option value="$PROJECT_DIR$/backend/src/main/java/sgu/csit/backend/controller/ManageController.java" />
         <option value="$PROJECT_DIR$/backend/src/main/java/sgu/csit/backend/controller/RegistrationController.java" />
+        <option value="$PROJECT_DIR$/backend/src/main/resources/application.properties" />
       </list>
     </option>
   </component>
@@ -332,7 +320,7 @@
       <workItem from="1555834310324" duration="12482000" />
       <workItem from="1555905098837" duration="32194000" />
       <workItem from="1555988163483" duration="3672000" />
-      <workItem from="1556072608915" duration="8121000" />
+      <workItem from="1556072608915" duration="9466000" />
     </task>
     <task id="LOCAL-00001" summary="added period type enum">
       <created>1553630548393</created>
@@ -358,10 +346,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21741000" />
+    <option name="totallyTimeSpent" value="23086000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="27" width="1920" height="1053" extended-state="6" />
+    <frame x="0" y="27" width="1920" height="1053" extended-state="7" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23237179" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -447,13 +436,6 @@
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-198" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="3" column="37" selection-start-line="3" selection-start-column="37" selection-end-line="3" selection-end-column="37" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/backend/src/main/resources/static/js/request-proxy.js">
@@ -610,11 +592,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/backend/src/main/java/sgu/csit/backend/controller/MetersDataController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-506">
+        <state relative-caret-position="88">
           <caret line="22" column="12" lean-forward="true" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="12" />
           <folding>
             <element signature="method#MetersDataController#0;class#MetersDataController#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="5" column="9" lean-forward="true" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
         </state>
       </provider>
     </entry>
