@@ -1,0 +1,55 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+body {
+    background-color: #9DCC68;
+}
+
+.container {
+    position: relative;
+    background-color: #fff;
+    width: 50%;
+    margin: 50px auto 0 auto;
+    padding: 40px;
+}
+
+.hidden {
+    display: none;
+}
+
+.table {
+    text-align: center;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table tr {
+    width: 100%;
+}
+
+.table tr td {
+    border: 1px solid black;
+    padding: 15px;
+}
+
+.select-td {
+    width: 100%;
+    border: none;
+}
+
+.select-input-td {
+    padding: 0 !important;
+}
+
+.input-field {
+    width: 95%;
+    height: 30px;
+}
+
+.send-btn {
+    background-color: #3B7608;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    width: 100%;
+    height: 35px;
+}

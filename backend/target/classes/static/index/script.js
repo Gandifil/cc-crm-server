@@ -1,8 +1,8 @@
 //-share------------------------------------------------------------------------------
 // consts
-// const serverURL = "http://localhost:8080/";
 const serverURL = "http://" + location.host + "/";
 const userAccountURL = "user_index.html";
+const adminAccountURL = "admin_index.html";
 // proxy functions
 function makePost(subPath, body, succHandler, errHandler, token = null) {
     let headers = {
@@ -70,12 +70,13 @@ function initialize() {
 
 // auto signing in
 function tryToSignIn() {
-    if (localStorage.hasOwnProperty("userToken")) {
-        cout("Found user token!");
-        window.location.href = userAccountURL;
+    if (localStorage.hasOwnProperty("token")) {
+        cout("Found token!");
+        let token = localStorage.getItem("token");
+        makeGet("profile", openAccount, printError, token)
     }
     else
-        cout("User token was not found!");
+        cout("Token was not found!");
 }
 
 // sign up / in switching
@@ -90,8 +91,7 @@ function switchToSignUp() {
     cout("switched to sign up!");
 }
 
-
-// sign up / in
+// signing up
 function printError(message) {
     cout("error:");
     cout(message);
@@ -115,16 +115,28 @@ function signUp() {
     makePost("auth/register", user, signIn, printError)
 }
 
-function openUserAccount(response) {
+// signing in
+function openAccount(response) {
+    let profile = response.data;
+    localStorage.setItem("profile", JSON.stringify(profile));
+    cout("Profile was saved!");
+
+    let role = profile.role;
+
+    if (role === "admin")
+        window.location.href = adminAccountURL;
+    else if (role === "user")
+        window.location.href = userAccountURL;
+    else
+        cout("Unknown role: " + role);
+}
+function fetchProfile(response) {
     let token = response.data.token;
-    localStorage.setItem("userToken", token);
-    cout("User token was saved!");
-    window.location.href = userAccountURL;
+    localStorage.setItem("token", token);
+    cout("Token was saved!");
+    makeGet("profile", openAccount, printError, token)
 }
 function signIn() {
-    // switchToSignUp()
-    // switchToSignIn()
-
     cout("signing in...");
 
     let formSelector;
@@ -140,5 +152,5 @@ function signIn() {
     
     cout(user)
 
-    makePost("auth/login", user, openUserAccount, printError)
+    makePost("auth/login", user, fetchProfile, printError)
 }

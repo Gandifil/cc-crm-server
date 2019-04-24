@@ -10,8 +10,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.*;
 import sgu.csit.backend.auth.JwtTokenUtil;
 import sgu.csit.backend.dto.MetersDataDTO;
+import sgu.csit.backend.dto.UserDTO;
 import sgu.csit.backend.model.MetersData;
 import sgu.csit.backend.model.PeriodType;
+import sgu.csit.backend.model.User;
 import sgu.csit.backend.security.JwtUser;
 import sgu.csit.backend.service.MetersDataService;
 import sgu.csit.backend.service.UserService;
@@ -37,7 +39,8 @@ public class MetersDataController {
     public MetersDataController(
             JwtTokenUtil jwtTokenUtil,
             MetersDataService metersDataService,
-            UserService userService, @Qualifier("jwtUserDetailsService") UserDetailsService userDetailsService
+            UserService userService,
+            @Qualifier("jwtUserDetailsService") UserDetailsService userDetailsService
     ) {
         this.jwtTokenUtil = jwtTokenUtil;
         this.metersDataService = metersDataService;

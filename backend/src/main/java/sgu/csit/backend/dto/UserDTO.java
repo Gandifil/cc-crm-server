@@ -1,5 +1,6 @@
 package sgu.csit.backend.dto;
 
+import sgu.csit.backend.model.AuthorityType;
 import sgu.csit.backend.model.User;
 
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ public class UserDTO {
     private String email;
 //    private Integer apartment;
     private String phoneNumber;
+    private String role;
 
     public UserDTO(User user) {
         this.firstName = user.getFirstName();
@@ -21,6 +23,11 @@ public class UserDTO {
         this.middleName = user.getMiddleName();
         this.email = user.getEmail();
         this.phoneNumber = user.getPhoneNumber();
+        if (!user.getAuthorities().isEmpty()
+                && user.getAuthorities().get(0).getName() == AuthorityType.ROLE_ADMIN)
+            this.role = "admin";
+        else
+            this.role = "user";
     }
 
     public static List<UserDTO> toDTO(List<User> users) {
@@ -45,5 +52,8 @@ public class UserDTO {
     }
     public String getPhoneNumber() {
         return phoneNumber;
+    }
+    public String getRole() {
+        return role;
     }
 }

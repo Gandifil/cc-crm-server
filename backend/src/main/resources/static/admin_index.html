@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="admin_index/styles.css">
+    <script src="admin_index/script.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <span class="exit-btn">Выход</span>
+    <div class="container">
+        <table class="table apart">
+            <tr>
+                <td colspan="4">
+                    <span class="debt-switcher">История показаний</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <!-- <select class="select-td">
+                        <option>Номер квартиры</option>
+                    </select> -->
+                    Указать номер квартиры
+                </td>
+                <td colspan="1">
+                    <select class="select-td">
+                        <option value="month">Этот месяц</option>
+                        <option value="year">Этот год</option>
+                        <option value="all" selected>Весь период</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    Номер квартиры
+                </td>
+            </tr>
+            <tr>
+                <td>Электр.</td>
+                <td>Хол. вода</td>
+                <td>Гор. вода</td>
+                <td>Дата</td>
+            </tr>
+            <tr class="removable">
+                <td colspan="4">
+                    квартира
+                </td>
+            </tr>
+            <tr class="removable">
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>2018</td>
+            </tr>
+            <tr class="removable">
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2019</td>
+            </tr>
+            <tr class="removable">
+                <td colspan="4">
+                    квартира
+                </td>
+            </tr>
+            <tr class="removable">
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>2018</td>
+            </tr>
+            <tr class="removable">
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2019</td>
+            </tr>
+        </table>
+        <table class="table debt hidden">
+            <tr>
+                <td colspan="5">
+                    <span class="apart-switcher">Должники</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="5">
+                    <select class="select-td">
+                        <option value="month">Этот месяц</option>
+                        <option value="year">Этот год</option>
+                        <option value="all" selected>Весь период</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="5">
+                    Номер квартиры
+                </td>
+            </tr>
+            <tr>
+                <td>Фамилия</td>
+                <td>Имя</td>
+                <td>Отчество</td>
+                <td>Эл. почта</td>
+                <td>Телефон</td>
+            </tr>
+            <tr class="removable">
+                <td colspan="5">
+                    квартира
+                </td>
+            </tr>
+            <tr class="removable">
+                <td>а</td>
+                <td>а</td>
+                <td>а</td>
+                <td>а</td>
+                <td>1</td>
+            </tr>
+            <tr class="removable">
+                <td>б</td>
+                <td>б</td>
+                <td>б</td>
+                <td>б</td>
+                <td>1</td>
+            </tr>
+            <tr class="removable">
+                <td colspan="5">
+                    квартира
+                </td>
+            </tr>
+            <tr class="removable">
+                <td>а</td>
+                <td>а</td>
+                <td>а</td>
+                <td>а</td>
+                <td>1</td>
+            </tr>
+            <tr class="removable">
+                <td>б</td>
+                <td>б</td>
+                <td>б</td>
+                <td>б</td>
+                <td>1</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

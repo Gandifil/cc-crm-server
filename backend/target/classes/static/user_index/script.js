@@ -1,6 +1,5 @@
 //-share------------------------------------------------------------------------------
 // consts
-// const serverURL = "http://localhost:8080/";
 const serverURL = "http://" + location.host + "/";
 const indexURL = "/";
 const parMap = {
@@ -81,9 +80,11 @@ function initialize() {
     checkUserToken();
 }
 
-
+// check
 function checkUserToken() {
-    if (localStorage.hasOwnProperty("userToken")) {
+    if (localStorage.hasOwnProperty("token")
+            && localStorage.hasOwnProperty("profile")
+            && JSON.parse(localStorage.getItem("profile")).role === "user") {
         cout("User token was confirm!");
         fetchData();
     }
@@ -95,8 +96,9 @@ function checkUserToken() {
 
 // exit
 function exit() {
-    localStorage.removeItem("userToken");
-    cout("User token was removed!")
+    localStorage.removeItem("token");
+    localStorage.removeItem("profile");
+    cout("User token and profile were removed!")
     window.location.href = indexURL;
 }
 
@@ -124,10 +126,10 @@ function removeElements(selector) {
 }
 function makeRow(values) {
     let row = document.createElement('tr');
+    row.classList.add('removable');
     for (let value of values) {
         let cell = document.createElement('td');
         cell.innerHTML = value;
-        cell.classList.add('removable');
         row.appendChild(cell);
     }
     return row;
@@ -149,8 +151,8 @@ function fillTable(response) {
 function fetchData() {
     cout("fetching data...");
     let param = parMap[ddList.value];
-    let token = localStorage.getItem("userToken");
-    makeGet("meters/?" + param, fillTable, printErr, token)
+    let token = localStorage.getItem("token");
+    makeGet("meters/?" + param, fillTable, printErr, token);
 }
 
 function sendData() {
@@ -164,7 +166,7 @@ function sendData() {
 	    "hotWater": hotAmount
     }
 
-    let token = localStorage.getItem("userToken");
+    let token = localStorage.getItem("token");
 
     makePost("meters/send", lastData, fetchData, printErr, token);
 }
