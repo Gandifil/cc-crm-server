@@ -14,6 +14,7 @@ import sgu.csit.backend.model.PeriodType;
 import sgu.csit.backend.service.MetersDataService;
 import sgu.csit.backend.service.UserService;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -47,21 +48,21 @@ public class ManageController {
             @RequestParam("periodType") PeriodType periodType,
             @PathVariable("userApart") Integer userApart
     ) {
-        Set<MetersDataDTO> metersData = metersDataService.getApartment(userApart, periodType);
+        List<MetersDataDTO> metersData = metersDataService.getApartment(userApart, periodType);
         return ResponseEntity.ok(metersData);
     }
 
     // all apartments with meters
     @RequestMapping(value = "/aparts/", method = RequestMethod.GET)
     public ResponseEntity getAllApartments(@RequestParam("periodType") PeriodType periodType) {
-        Map<Integer, Set<MetersDataDTO>> apartments = userService.getAllApartments(periodType);
+        Map<Integer, List<MetersDataDTO>> apartments = userService.getAllApartments(periodType);
         return ResponseEntity.ok(apartments);
     }
 
     // bad apartments with users
     @RequestMapping(value = "/bad_aparts/", method = RequestMethod.GET)
     public ResponseEntity getBadApartments(@RequestParam("periodType") PeriodType periodType) {
-        Map<Integer, Set<UserDTO>> badApartments = userService.getBadApartments(periodType);
+        Map<Integer, List<UserDTO>> badApartments = userService.getBadApartments(periodType);
         return ResponseEntity.ok(badApartments);
     }
 

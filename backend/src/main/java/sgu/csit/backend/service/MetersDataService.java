@@ -8,6 +8,7 @@ import sgu.csit.backend.model.PeriodType;
 import sgu.csit.backend.repository.MetersDataRepository;
 
 import java.util.Calendar;
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -25,8 +26,8 @@ public class MetersDataService {
     }
 
     // retrieval
-    public Set<MetersDataDTO> getApartment(Integer apartment, PeriodType periodType) {
-        Set<MetersDataDTO> metersData;
+    public List<MetersDataDTO> getApartment(Integer apartment, PeriodType periodType) {
+        List<MetersDataDTO> metersData;
         switch (periodType) {
             case CURRENT_MONTH:
                 Calendar calendar = Calendar.getInstance();

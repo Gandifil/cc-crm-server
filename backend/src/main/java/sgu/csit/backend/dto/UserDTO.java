@@ -2,7 +2,9 @@ package sgu.csit.backend.dto;
 
 import sgu.csit.backend.model.User;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class UserDTO {
@@ -21,8 +23,8 @@ public class UserDTO {
         this.phoneNumber = user.getPhoneNumber();
     }
 
-    public static Set<UserDTO> toDTO(Set<User> users) {
-        Set<UserDTO> userDTOs = new HashSet<>();
+    public static List<UserDTO> toDTO(List<User> users) {
+        List<UserDTO> userDTOs = new ArrayList<>();
         for (User user : users)
             userDTOs.add(new UserDTO(user));
         return userDTOs;

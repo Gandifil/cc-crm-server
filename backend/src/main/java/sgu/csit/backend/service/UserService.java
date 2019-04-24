@@ -121,18 +121,18 @@ public class UserService {
         }
         return calendar;
     }
-    public Map<Integer, Set<MetersDataDTO>> getAllApartments(PeriodType periodType) {
+    public Map<Integer, List<MetersDataDTO>> getAllApartments(PeriodType periodType) {
         Calendar calendar = getActualMinOf(periodType);
 
-        Map<Integer, Set<MetersDataDTO>> apartments = new HashMap<>();
+        Map<Integer, List<MetersDataDTO>> apartments = new HashMap<>();
         for (User user : userRepository.findAll()) {
             Integer apartment = user.getApartment();
             if (apartment == 0)
                 continue;
-            Set<MetersData> metersData = user.getMetersData()
+            List<MetersData> metersData = user.getMetersData()
                                                 .stream()
                                                 .filter(md -> md.getDate().after(calendar.getTime()))
-                                                .collect(Collectors.toSet());
+                                                .collect(Collectors.toList());
             if (apartments.containsKey(apartment))
                 apartments.get(apartment).addAll(MetersDataDTO.toDTO(metersData));
             else
@@ -142,20 +142,20 @@ public class UserService {
         return apartments;
     }
 
-    private boolean notActual(Set<MetersDataDTO> metersData, Date date) {
+    private boolean notActual(List<MetersDataDTO> metersData, Date date) {
         for (MetersDataDTO md : metersData)
             if (md.getDate().after(date))
                 return false;
         return true;
     }
-    public Map<Integer, Set<UserDTO>> getBadApartments(PeriodType periodType) {
+    public Map<Integer, List<UserDTO>> getBadApartments(PeriodType periodType) {
         Calendar calendar = getActualMinOf(periodType);
 
-        Map<Integer, Set<UserDTO>> badApartments = new HashMap<>();
-        Map<Integer, Set<MetersDataDTO>> apartments = getAllApartments(PeriodType.ALL);
+        Map<Integer, List<UserDTO>> badApartments = new HashMap<>();
+        Map<Integer, List<MetersDataDTO>> apartments = getAllApartments(PeriodType.ALL);
         for (Integer apartment : apartments.keySet())
             if (notActual(apartments.get(apartment), calendar.getTime()) && apartment != 0) {
-                Set<User> badUsers = userRepository.findAllByApartment(apartment);
+                List<User> badUsers = userRepository.findAllByApartment(apartment);
                 badApartments.put(apartment, UserDTO.toDTO(badUsers));
             }
 

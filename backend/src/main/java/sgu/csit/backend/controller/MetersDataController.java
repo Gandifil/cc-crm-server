@@ -17,8 +17,10 @@ import sgu.csit.backend.service.MetersDataService;
 import sgu.csit.backend.service.UserService;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
+@CrossOrigin
 @RestController
 @PreAuthorize("hasRole({'USER'})")
 @RequestMapping("/meters/")
@@ -61,7 +63,7 @@ public class MetersDataController {
             @AuthenticationPrincipal JwtUser user,
             @RequestParam("periodType") PeriodType periodType
     ) {
-        Set<MetersDataDTO> metersData =
+        List<MetersDataDTO> metersData =
             metersDataService.getApartment(user.getApartment(), periodType);
         return ResponseEntity.ok(metersData);
     }

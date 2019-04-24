@@ -75,7 +75,7 @@ public class User {
     private List<Authority> authorities;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-    private Set<MetersData> metersData;
+    private List<MetersData> metersData;
 
     public Long getId() {
         return id;
@@ -157,11 +157,11 @@ public class User {
         this.lastPasswordResetDate = lastPasswordResetDate;
     }
 
-    public Set<MetersData> getMetersData() {
+    public List<MetersData> getMetersData() {
         return metersData;
     }
 
-    public void setUsers(Set<MetersData> metersData) {
+    public void setMetersData(List<MetersData> metersData) {
         this.metersData = metersData;
     }
 

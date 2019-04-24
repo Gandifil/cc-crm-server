@@ -2,9 +2,7 @@ package sgu.csit.backend.dto;
 
 import sgu.csit.backend.model.MetersData;
 
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class MetersDataDTO {
     private int electricity;
@@ -19,8 +17,8 @@ public class MetersDataDTO {
         this.date = metersData.getDate();
     }
 
-    public static Set<MetersDataDTO> toDTO(Set<MetersData> metersData) {
-        Set<MetersDataDTO> metersDataDTO = new HashSet<>();
+    public static List<MetersDataDTO> toDTO(List<MetersData> metersData) {
+        List<MetersDataDTO> metersDataDTO = new ArrayList<>();
         for (MetersData md : metersData)
             metersDataDTO.add(new MetersDataDTO(md));
         return metersDataDTO;
