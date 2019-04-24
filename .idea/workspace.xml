@@ -3,19 +3,22 @@
   <component name="ChangeListManager">
     <list default="true" id="9da519fe-55ea-4c0f-95cd-dc7ca5f9fbd0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/sgu/csit/backend/controller/ManageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/sgu/csit/backend/controller/ManageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/sgu/csit/backend/controller/MetersDataController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/sgu/csit/backend/controller/MetersDataController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/sgu/csit/backend/dto/MetersDataDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/sgu/csit/backend/dto/MetersDataDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/sgu/csit/backend/dto/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/sgu/csit/backend/dto/UserDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/sgu/csit/backend/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/sgu/csit/backend/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/sgu/csit/backend/repository/MetersDataRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/sgu/csit/backend/repository/MetersDataRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/sgu/csit/backend/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/sgu/csit/backend/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/sgu/csit/backend/service/MetersDataService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/sgu/csit/backend/service/MetersDataService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/sgu/csit/backend/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/sgu/csit/backend/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/static/js/vue-app.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/static/js/vue-app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/css/grid.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/js/constants.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/js/grid.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/js/request-proxy.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/js/vue-app.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/pub/img/adress.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/pub/img/cold.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/pub/img/fire.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/pub/img/key.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/pub/img/lightning.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/pub/img/name.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/pub/img/surname.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/pub/img/user.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/pub/img/user.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/pub/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/templates/index.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/backend/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -43,15 +46,15 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="java" value="21" />
-          <entry key="js" value="2" />
-          <entry key="xml" value="2" />
+          <entry key="js" value="3" />
+          <entry key="xml" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="JAVA" value="21" />
-          <entry key="JavaScript" value="2" />
-          <entry key="XML" value="2" />
+          <entry key="JavaScript" value="3" />
+          <entry key="XML" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.lifecycle.project">
@@ -78,7 +81,7 @@
         <entry file="file://$PROJECT_DIR$/backend/src/main/java/sgu/csit/backend/controller/ManageController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="308">
-              <caret line="30" column="42" lean-forward="true" selection-start-line="30" selection-start-column="42" selection-end-line="30" selection-end-column="42" />
+              <caret line="30" column="42" selection-start-line="30" selection-start-column="42" selection-end-line="30" selection-end-column="42" />
               <folding>
                 <element signature="method#ManageController#0;class#ManageController#0" />
               </folding>
@@ -86,11 +89,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backend/src/main/java/sgu/csit/backend/config/WebSecurityConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-572">
-              <caret line="40" column="18" lean-forward="true" selection-start-line="40" selection-start-column="18" selection-end-line="40" selection-end-column="18" />
+            <state relative-caret-position="-374">
+              <caret line="40" column="18" selection-start-line="40" selection-start-column="18" selection-end-line="40" selection-end-column="18" />
               <folding>
                 <element signature="e#2186#2220#1" expanded="true" />
               </folding>
@@ -98,11 +101,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/backend/src/main/java/sgu/csit/backend/controller/MetersDataController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="902">
-              <caret line="67" column="35" lean-forward="true" selection-start-line="67" selection-start-column="35" selection-end-line="67" selection-end-column="35" />
+            <state relative-caret-position="-506">
+              <caret line="22" column="12" lean-forward="true" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="12" />
               <folding>
                 <element signature="method#MetersDataController#0;class#MetersDataController#0" />
               </folding>
@@ -274,24 +277,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cc-crm-server" type="b2602c69:ProjectViewProjectNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="pub" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cc-crm-server" type="b2602c69:ProjectViewProjectNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -347,7 +332,7 @@
       <workItem from="1555834310324" duration="12482000" />
       <workItem from="1555905098837" duration="32194000" />
       <workItem from="1555988163483" duration="3672000" />
-      <workItem from="1556072608915" duration="4731000" />
+      <workItem from="1556072608915" duration="8121000" />
     </task>
     <task id="LOCAL-00001" summary="added period type enum">
       <created>1553630548393</created>
@@ -373,12 +358,12 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18351000" />
+    <option name="totallyTimeSpent" value="21741000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1920" height="1053" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23237179" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23237179" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -389,7 +374,7 @@
       <window_info id="Learn" order="8" weight="0.32959402" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32930845" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" weight="0.6125137" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49946696" visible="true" weight="0.3677278" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.388584" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -579,26 +564,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/src/main/java/sgu/csit/backend/controller/ManageController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="30" column="42" lean-forward="true" selection-start-line="30" selection-start-column="42" selection-end-line="30" selection-end-column="42" />
-          <folding>
-            <element signature="method#ManageController#0;class#ManageController#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/src/main/java/sgu/csit/backend/controller/MetersDataController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="902">
-          <caret line="67" column="35" lean-forward="true" selection-start-line="67" selection-start-column="35" selection-end-line="67" selection-end-column="35" />
-          <folding>
-            <element signature="method#MetersDataController#0;class#MetersDataController#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/backend/src/main/java/sgu/csit/backend/controller/RegistrationController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="112">
@@ -611,10 +576,44 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/backend/src/main/java/sgu/csit/backend/config/WebSecurityConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-572">
-          <caret line="40" column="18" lean-forward="true" selection-start-line="40" selection-start-column="18" selection-end-line="40" selection-end-column="18" />
+        <state relative-caret-position="-374">
+          <caret line="40" column="18" selection-start-line="40" selection-start-column="18" selection-end-line="40" selection-end-column="18" />
           <folding>
             <element signature="e#2186#2220#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/src/main/java/sgu/csit/backend/controller/ManageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="30" column="42" selection-start-line="30" selection-start-column="42" selection-end-line="30" selection-end-column="42" />
+          <folding>
+            <element signature="method#ManageController#0;class#ManageController#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-594" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/src/main/resources/static/index/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-792">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/src/main/java/sgu/csit/backend/controller/MetersDataController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-506">
+          <caret line="22" column="12" lean-forward="true" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="12" />
+          <folding>
+            <element signature="method#MetersDataController#0;class#MetersDataController#0" />
           </folding>
         </state>
       </provider>
