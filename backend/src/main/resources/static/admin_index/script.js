@@ -48,6 +48,10 @@ var apartSwitcher;
 
 var apartDDList;
 var debtDDList;
+var apNumField;
+
+// global
+var apartData;
 
 // events
 document.addEventListener("DOMContentLoaded", initialize);
@@ -63,6 +67,7 @@ function initialize() {
 
     apartDDList = document.querySelector('.table.apart .select-td');
     debtDDList = document.querySelector('.table.debt .select-td');
+    apNumField = document.querySelector('.apartNumber');
 
     // events
     exitBtn.addEventListener('click', exit);
@@ -72,6 +77,7 @@ function initialize() {
 
     apartDDList.addEventListener('change', fetchData);
     debtDDList.addEventListener('change', fetchData);
+    apNumField.addEventListener('change', selectApart);
 
     // next
     checkAdminToken();
@@ -144,9 +150,8 @@ function makeRow(values) {
     }
     return row;
 }
-function fillApartTable(response) {
+function fillApartTable(aparts) {
     cout("Filling apart table...");
-    let aparts = response.data;
     cout(aparts);
 
     removeElements(".table.apart .removable");
@@ -164,6 +169,25 @@ function fillApartTable(response) {
                 apartTable.appendChild(makeRow([elAmount, coldAmount, hotAmount, date]));
             }
     }
+}
+function selectApart() {
+    cout("Selecting apart...");
+    let n = apNumField.value;
+    if (n === "")
+        fillApartTable(apartData);
+    else if (apartData.hasOwnProperty(n)) {
+        let apart = {};
+        apart[n] = apartData[n];
+        cout(apart);
+        fillApartTable(apart);
+    }
+    else
+        cout("No such apart!");
+}
+function saveAparts(response) {
+    cout("Saving apart data...");
+    apartData = response.data;
+    selectApart();
 }
 function fillDebtTable(response) {
     cout("Filling debt table...");
@@ -190,7 +214,7 @@ function fetchData() {
     // apart table
     let param = parMap[apartDDList.value];
     let token = localStorage.getItem("token");
-    makeGet("manage/aparts/?" + param, fillApartTable, printErr, token);
+    makeGet("manage/aparts/?" + param, saveAparts, printErr, token);
 
     // debt table
     param = parMap[debtDDList.value];
