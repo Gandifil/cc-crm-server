@@ -175,4 +175,3 @@ function sendData() {
 
     makePost("meters/send", lastData, fetchData, printErr, token);
 }
-

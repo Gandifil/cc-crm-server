@@ -164,7 +164,6 @@ function fetchData() {
     let token = localStorage.getItem("token");
     makeGet("meters/?" + param, fillTable, printErr, token);
 }
-cout("upd!");
 function sendData() {
     let lastData = {
         "electricity": electro.value,
@@ -176,4 +175,3 @@ function sendData() {
 
     makePost("meters/send", lastData, fetchData, printErr, token);
 }
-

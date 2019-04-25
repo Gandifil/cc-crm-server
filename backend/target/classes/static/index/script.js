@@ -43,6 +43,15 @@ var signInSwitch;
 var signUpBtn;
 var signInBtn;
 
+var suUsername;
+var suPassword;
+var suEmail;
+var suLastName;
+var suFirstName;
+var suMiddleName;
+var suApNum;
+var suPhoneNum;
+
 // events
 document.addEventListener("DOMContentLoaded", initialize);
 
@@ -56,6 +65,15 @@ function initialize() {
 
     signUpBtn = document.querySelector('.sign-up-btn');
     signInBtn = document.querySelector('.sign-in-btn');
+
+    suUsername = document.querySelector('.sign-up-form .username');
+    suPassword = document.querySelector('.sign-up-form .password');
+    suEmail = document.querySelector('.sign-up-form .email');
+    suLastName = document.querySelector('.sign-up-form .lastName');
+    suFirstName = document.querySelector('.sign-up-form .firstName');
+    suMiddleName = document.querySelector('.sign-up-form .middleName');
+    suApNum = document.querySelector('.sign-up-form .apartment');
+    suPhoneNum = document.querySelector('.sign-up-form .phoneNumber');
 
     // events
     signInSwitch.addEventListener('click', switchToSignIn);
@@ -92,15 +110,70 @@ function switchToSignUp() {
 }
 
 // signing up
+function markOk(element) {
+    element.style.background = "lightgreen";
+}
+function markNot(element) {
+    element.style.background = "lightpink";
+}
+function checkField(field, lowerBound, upperBound, succHandler, errHandler) {
+    cout(field.value);
+    if (field.value.length >= lowerBound && field.value.length <= upperBound) {
+        succHandler(field);
+        return true;
+    }
+    errHandler(field);
+    return false;
+}
+function checkFieldContainsAll(field, subs, succHandler, errHandler) {
+    cout(field.value);
+    for (let sub of subs)
+        if (!field.value.includes(sub)) {
+            errHandler(field);
+            return false;
+        }
+    succHandler(field);
+    return true;
+}
+function checkFieldNotContainsAny(field, subs, succHandler, errHandler) {
+    cout(field.value);
+    for (let sub of subs)
+        if (field.value.includes(sub)) {
+            errHandler(field);
+            return false;
+        }
+    succHandler(field);
+    return true;
+}
+cout("super new");
+function checkFields() {
+    cout("Checking fields...");
+    let results = [ checkField(suUsername, 4, 24, markOk, markNot),
+                    checkField(suPassword, 6, 32, markOk, markNot),
+                    checkField(suEmail, 5, 50, markOk, markNot) && checkFieldContainsAll(suEmail, [ '@', '.' ], markOk, markNot),
+                    checkField(suLastName, 3, 50, markOk, markNot),
+                    checkField(suFirstName, 3, 50, markOk, markNot),
+                    checkField(suMiddleName, 3, 50, markOk, markNot),
+                    checkField(suApNum, 1, 5, markOk, markNot) && checkFieldNotContainsAny(suApNum, [ '+', '-' ], markOk, markNot),
+                    checkField(suPhoneNum, 6, 11, markOk, markNot) && checkFieldNotContainsAny(suPhoneNum, [ '+', '-' ], markOk, markNot) ];
+    for (let result of results)
+        if (!result)
+            return false;
+    return true;
+}
 function printError(message) {
     cout("error:");
     cout(message);
 }
 function signUp() {
-    /*cout("switching vis...");
-    document.querySelector('.tooltip.for-username').style.color = "red";
-    document.querySelector('.tooltip.for-username').style.visibility = "visible";*/
-    cout("signing up...");
+    if (!checkFields()) {
+        cout("Some fields is not correct!");
+        return;
+    }
+    cout("All fields are correct!");
+        
+
+    /*cout("signing up...");
 
     let user = {
         "username" : document.querySelector('.sign-up-form .username').value,
@@ -115,7 +188,7 @@ function signUp() {
 
     cout(user);
 
-    makePost("auth/register", user, signIn, printError);
+    makePost("auth/register", user, signIn, printError);*/
 }
 
 // signing in

@@ -32,10 +32,10 @@
               <input type="text" placeholder="Отчество" class="middleName"/><span class="tooltip">От 3 до 50 символов</span>
             </span>
             <span class="tooltip-wrapper">
-              <input type="text" placeholder="Номер квартиры" class="apartment"/><span class="tooltip">Номер вашей квартиры</span>
+              <input type="number" min="0" placeholder="Номер квартиры" class="apartment"/><span class="tooltip">От 1 до 5 цифр</span>
             </span>
             <span class="tooltip-wrapper">
-              <input type="text" placeholder="Номер телефона" class="phoneNumber"/><span class="tooltip">От 6 до 12 символов</span>
+              <input type="number" min="100000" max="99999999999" placeholder="Номер телефона" class="phoneNumber"/><span class="tooltip">От 6 до 11 цифр</span>
             </span>
             <button type="button" class="sign-up-btn">Регистрация</button>
             <p class="message">Уже зарегистрированы? <span class="sign-in-switch">Войти</span></p>

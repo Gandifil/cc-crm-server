@@ -4,15 +4,10 @@
     <list default="true" id="9da519fe-55ea-4c0f-95cd-dc7ca5f9fbd0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/admin_index.html" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/static/admin_index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/admin_index/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/static/admin_index/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/user_index.html" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/static/user_index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/index/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/static/index/script.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/user_index/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/static/user_index/script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/user_index/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/static/user_index/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/static/admin_index.html" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/static/admin_index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/static/admin_index/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/static/admin_index/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/static/user_index.html" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/static/user_index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/static/user_index/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/static/user_index/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/static/user_index/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/static/user_index/script.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/backend/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -88,8 +83,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/backend/src/main/resources/application.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+            <state relative-caret-position="528">
+              <caret line="24" column="24" lean-forward="true" selection-start-line="24" selection-start-column="24" selection-end-line="24" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -349,7 +344,7 @@
       <workItem from="1555905098837" duration="32194000" />
       <workItem from="1555988163483" duration="3672000" />
       <workItem from="1556072608915" duration="38876000" />
-      <workItem from="1556156834128" duration="9933000" />
+      <workItem from="1556156834128" duration="15168000" />
     </task>
     <task id="LOCAL-00001" summary="added period type enum">
       <created>1553630548393</created>
@@ -375,10 +370,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="62429000" />
+    <option name="totallyTimeSpent" value="67664000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="27" width="1920" height="1053" extended-state="7" />
+    <frame x="0" y="27" width="1920" height="1053" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23504274" />
@@ -667,8 +662,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/backend/src/main/resources/application.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+        <state relative-caret-position="528">
+          <caret line="24" column="24" lean-forward="true" selection-start-line="24" selection-start-column="24" selection-end-line="24" selection-end-column="24" />
         </state>
       </provider>
     </entry>
