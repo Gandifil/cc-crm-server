@@ -41,6 +41,10 @@ function cout(message) {
 // elements
 var exitBtn;
 
+var lName;
+var fName;
+var mName;
+
 var apartTable;
 var debtSwitcher;
 var debtTable;
@@ -58,6 +62,10 @@ document.addEventListener("DOMContentLoaded", initialize);
 function initialize() {
     // elements
     exitBtn = document.querySelector('.exit-btn');
+
+    lName = document.querySelector('.last-name');
+    fName = document.querySelector('.first-name');
+    mName = document.querySelector('.middle-name');
 
     apartTable = document.querySelector('.table.apart');
     debtSwitcher = document.querySelector('.debt-switcher');
@@ -83,11 +91,19 @@ function initialize() {
 }
 
 // check
+function fillProfile(profile) {
+    lName.innerHTML = profile.lastName;
+    fName.innerHTML = profile.firstName;
+    mName.innerHTML = profile.middleName;
+}
 function checkAdminToken() {
     if (localStorage.hasOwnProperty("token")
             && localStorage.hasOwnProperty("profile")
             && JSON.parse(localStorage.getItem("profile")).role === "admin") {
         cout("Admin token was confirm!");
+        let profile = JSON.parse(localStorage.getItem("profile"));
+        cout(profile);
+        fillProfile(profile);
         fetchData();
     }
     else {

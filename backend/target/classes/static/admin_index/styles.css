@@ -106,3 +106,18 @@ body {
 .exit-btn:hover,.exit-btn:active,.exit-btn:focus {
     background: #43A047;
 }
+
+/* profile */
+.profile-table {
+    margin-top: 20px;
+    position: absolute;
+    left: 20px;
+    /* text-align: center; */
+    background-color: #FFFFE0;
+    border-collapse: collapse;
+}
+
+.profile-table tr td {
+    border: 1px solid black;
+    padding: 15px;
+}
