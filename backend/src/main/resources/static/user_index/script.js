@@ -221,6 +221,33 @@ function checkFields() {
             return false;
     return true;
 }
+function markError(element) {
+    element.style.background = "magenta";
+}
+function checkResponse(response) {
+    cout("Response:");
+    cout(response.data);
+
+    if (response.data.electro === "ok")
+        markOk(electro);
+    else
+        markError(electro);
+        
+    if (response.data.cold === "ok")
+        markOk(cold);
+    else
+        markError(cold);
+
+    if (response.data.hot === "ok")
+        markOk(hot);
+    else
+        markError(hot);
+
+    if (response.data.electro === "ok"
+        && response.data.cold === "ok"
+        && response.data.hot === "ok")
+        fetchData();
+}
 function sendData() {
     if (!checkFields()) {
         cout("Some fields is not correct!");
@@ -238,5 +265,5 @@ function sendData() {
 
     let token = localStorage.getItem("token");
 
-    makePost("meters/send", lastData, fetchData, printErr, token);
+    makePost("meters/send", lastData, checkResponse, printErr, token);
 }
