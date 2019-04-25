@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9da519fe-55ea-4c0f-95cd-dc7ca5f9fbd0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/user_index/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/static/user_index/script.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/backend/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -174,7 +172,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="260" />
     <option name="y" value="20" />
     <option name="width" value="1400" />
@@ -355,7 +353,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556211779923" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556211854239" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -396,7 +394,7 @@
       <workItem from="1555905098837" duration="32194000" />
       <workItem from="1555988163483" duration="3672000" />
       <workItem from="1556072608915" duration="38876000" />
-      <workItem from="1556156834128" duration="38005000" />
+      <workItem from="1556156834128" duration="38260000" />
     </task>
     <task id="LOCAL-00001" summary="added period type enum">
       <created>1553630548393</created>
@@ -422,11 +420,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="90501000" />
+    <option name="totallyTimeSpent" value="90756000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1920" height="1053" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23504274" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -439,12 +436,12 @@
       <window_info id="Learn" order="8" weight="0.32959402" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32930845" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49893162" visible="true" weight="0.2941822" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49893162" weight="0.2941822" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.388584" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32936078" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49946582" weight="0.32491767" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" sideWeight="0.49946582" visible="true" weight="0.32491767" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5005342" side_tool="true" weight="0.442371" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32936078" />
       <window_info anchor="bottom" id="Spring" order="10" weight="0.32936078" />
