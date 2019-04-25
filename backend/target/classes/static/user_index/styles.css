@@ -50,7 +50,7 @@ body {
     height: 36px;
     padding-left: 12px;
     border: 1px solid #D3D3D3;
-    background-color: #FFFFE0;
+    /* background-color: #FFFFE0; */
 }
 
 /* colorize */
@@ -74,6 +74,9 @@ body {
 }
 .reading {
     background-color: #90EE90;
+}
+.table.send .reading {
+    background-color: #FFFFE0;
 }
 
 .send-btn {

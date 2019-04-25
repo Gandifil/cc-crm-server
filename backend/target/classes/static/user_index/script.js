@@ -173,14 +173,63 @@ function fillTable(response) {
         histTable.appendChild(makeRow([elAmount, coldAmount, hotAmount, date]));
     }
 }
-function fetchData() {
+function clearFields() {
     electro.value = cold.value = hot.value = "";
+    electro.style.background = "white";
+    cold.style.background = "white";
+    hot.style.background = "white";
+}
+function fetchData() {
+    clearFields();
     cout("fetching data...");
     let param = parMap[ddList.value];
     let token = localStorage.getItem("token");
     makeGet("meters/?" + param, fillTable, printErr, token);
 }
+function markOk(element) {
+    element.style.background = "lightgreen";
+}
+function markNot(element) {
+    element.style.background = "lightpink";
+}
+function checkField(field, lowerBound, upperBound, succHandler, errHandler) {
+    cout(field.value);
+    if (field.value.length >= lowerBound && field.value.length <= upperBound) {
+        succHandler(field);
+        return true;
+    }
+    errHandler(field);
+    return false;
+}
+function checkFieldNotContainsAny(field, subs, succHandler, errHandler) {
+    cout(field.value);
+    for (let sub of subs)
+        if (field.value.includes(sub)) {
+            errHandler(field);
+            return false;
+        }
+    succHandler(field);
+    return true;
+}
+function checkFields() {
+    cout("Checking fields...");
+    let results = [ checkField(electro, 1, 10, markOk, markNot) && checkFieldNotContainsAny(electro, [ '+', '-', 'e' ], markOk, markNot),
+                    checkField(cold, 1, 10, markOk, markNot) && checkFieldNotContainsAny(cold, [ '+', '-', 'e' ], markOk, markNot),
+                    checkField(hot, 1, 10, markOk, markNot) && checkFieldNotContainsAny(hot, [ '+', '-', 'e' ], markOk, markNot) ];
+    for (let result of results)
+        if (!result)
+            return false;
+    return true;
+}
 function sendData() {
+    if (!checkFields()) {
+        cout("Some fields is not correct!");
+        return;
+    }
+    cout("All fields are correct!");
+
+    cout("Sending data...");
+
     let lastData = {
         "electricity": electro.value,
         "coldWater": cold.value,
