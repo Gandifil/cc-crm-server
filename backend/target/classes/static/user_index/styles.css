@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
 body {
-    background-color: #9DCC68;
+    background-color: #76b852;
 }
 
 .container {
@@ -10,6 +10,7 @@ body {
     width: 50%;
     margin: 50px auto 0 auto;
     padding: 40px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
 .hidden {
@@ -32,24 +33,75 @@ body {
 }
 
 .select-td {
-    width: 100%;
+    width: 90%;
+    height: 36px;
+    padding-left: 8px;
     border: none;
+    background-color: white;
+    border: 1px solid #D3D3D3;
 }
 
-.select-input-td {
+/* .select-input-td {
     padding: 0 !important;
-}
+} */
 
 .input-field {
-    width: 95%;
-    height: 30px;
+    width: 90%;
+    height: 36px;
+    padding-left: 12px;
+    border: 1px solid #D3D3D3;
+    background-color: #FFFFE0;
+}
+
+/* colorize */
+.title {
+    font-family: "Roboto", sans-serif;
+    background: #4CAF50;
+    color: #FFFFFF;
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+}
+.title:hover,.title:active,.title:focus {
+    background: #43A047;
+}
+.filter {
+    background-color: #FFFFE0;
+}
+.reading.header td {
+    border-bottom-width: 2px;
+}
+.reading {
+    background-color: #90EE90;
 }
 
 .send-btn {
-    background-color: #3B7608;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    width: 100%;
-    height: 35px;
+    font-family: "Roboto", sans-serif;
+    background: rgb(27, 131, 235);
+    color: #FFFFFF;
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+}
+.send-btn:hover,.send-btn:active,.send-btn:focus {
+    background: rgb(22, 122, 221);
+}
+
+.exit-btn {
+    font-family: "Roboto", sans-serif;
+    background: #4CAF50;
+    border: 1px solid white;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+    width: 60px;
+    height: 30px;
+}
+.exit-btn:hover,.exit-btn:active,.exit-btn:focus {
+    background: #43A047;
 }

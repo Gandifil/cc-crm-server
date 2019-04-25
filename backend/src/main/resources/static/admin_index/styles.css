@@ -10,6 +10,7 @@ body {
     width: 50%;
     margin: 50px auto 0 auto;
     padding: 40px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
 .hidden {
@@ -70,7 +71,6 @@ body {
     transition: all 0.3 ease;
     cursor: pointer;
 }
-
 .title:hover,.title:active,.title:focus {
     background: #43A047;
 }
@@ -88,4 +88,21 @@ body {
 }
 .reading.empty,.users {
     background-color: #FFB6C1;
+}
+
+.exit-btn {
+    font-family: "Roboto", sans-serif;
+    background: #4CAF50;
+    border: 1px solid white;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+    width: 60px;
+    height: 30px;
+}
+.exit-btn:hover,.exit-btn:active,.exit-btn:focus {
+    background: #43A047;
 }

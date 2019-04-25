@@ -46,6 +46,10 @@ var histSwitcher;
 var histTable;
 var sendSwitcher;
 
+var electro;
+var cold;
+var hot;
+
 var sendBtn;
 
 var ddList;
@@ -61,6 +65,10 @@ function initialize() {
     histSwitcher = document.querySelector('.hist-switcher');
     histTable = document.querySelector('.table.hist');
     sendSwitcher = document.querySelector('.send-switcher');
+
+    electro = document.querySelector('.electro');
+    cold = document.querySelector('.cold');
+    hot = document.querySelector('.hot');
 
     sendBtn = document.querySelector('.send-btn');
 
@@ -127,6 +135,7 @@ function removeElements(selector) {
 function makeRow(values) {
     let row = document.createElement('tr');
     row.classList.add('removable');
+    row.classList.add('reading');
     for (let value of values) {
         let cell = document.createElement('td');
         cell.innerHTML = value;
@@ -149,21 +158,18 @@ function fillTable(response) {
     }
 }
 function fetchData() {
+    electro.value = cold.value = hot.value = "";
     cout("fetching data...");
     let param = parMap[ddList.value];
     let token = localStorage.getItem("token");
     makeGet("meters/?" + param, fillTable, printErr, token);
 }
-
+cout("upd!");
 function sendData() {
-    let elAmount = document.querySelector('.electro').value;
-    let coldAmount = document.querySelector('.cold').value;
-    let hotAmount = document.querySelector('.hot').value;
-
     let lastData = {
-        "electricity": elAmount,
-        "coldWater": coldAmount,
-	    "hotWater": hotAmount
+        "electricity": electro.value,
+        "coldWater": cold.value,
+	    "hotWater": hot.value
     }
 
     let token = localStorage.getItem("token");
