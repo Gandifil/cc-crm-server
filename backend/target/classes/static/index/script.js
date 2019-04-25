@@ -145,7 +145,7 @@ function checkFieldNotContainsAny(field, subs, succHandler, errHandler) {
     succHandler(field);
     return true;
 }
-cout("super new");
+cout("rele");
 function checkFields() {
     cout("Checking fields...");
     let results = [ checkField(suUsername, 4, 24, markOk, markNot),
@@ -171,24 +171,23 @@ function signUp() {
         return;
     }
     cout("All fields are correct!");
-        
 
-    /*cout("signing up...");
+    cout("signing up...");
 
     let user = {
-        "username" : document.querySelector('.sign-up-form .username').value,
-        "password": document.querySelector('.sign-up-form .password').value,
-        "email": document.querySelector('.sign-up-form .email').value,
-        "lastName": document.querySelector('.sign-up-form .lastName').value,
-        "firstName": document.querySelector('.sign-up-form .firstName').value,
-        "middleName": document.querySelector('.sign-up-form .middleName').value,
-        "apartment": document.querySelector('.sign-up-form .apartment').value,
-        "phoneNumber": document.querySelector('.sign-up-form .phoneNumber').value
+        "username": suUsername.value,
+        "password": suPassword.value,
+        "email": suEmail.value,
+        "lastName": suLastName.value,
+        "firstName": suFirstName.value,
+        "middleName": suMiddleName.value,
+        "apartment": suApNum.value,
+        "phoneNumber": suPhoneNum.value
     };
 
     cout(user);
 
-    makePost("auth/register", user, signIn, printError);*/
+    makePost("auth/register", user, signIn, printError);
 }
 
 // signing in
