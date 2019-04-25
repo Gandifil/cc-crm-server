@@ -58,6 +58,9 @@ var sendBtn;
 
 var ddList;
 
+var fromDate;
+var toDate;
+
 // events
 document.addEventListener("DOMContentLoaded", initialize);
 
@@ -80,7 +83,10 @@ function initialize() {
 
     sendBtn = document.querySelector('.send-btn');
 
-    ddList = document.querySelector('select');
+    ddList = document.querySelector('.select-td');
+
+    fromDate = document.querySelector('.from-date');
+    toDate = document.querySelector('.to-date');
 
     // events
     exitBtn.addEventListener('click', exit);
@@ -90,7 +96,10 @@ function initialize() {
     histSwitcher.addEventListener('click', switchToHist);
     sendSwitcher.addEventListener('click', switchToSend);
 
-    ddList.addEventListener('change', fetchData);
+    ddList.addEventListener('change', switchMode);
+
+    fromDate.addEventListener('change', fetchData);
+    toDate.addEventListener('change', fetchData);
 
     // next
     checkUserToken();
@@ -138,6 +147,15 @@ function switchToSend() {
     cout("switched to send!");
 }
 
+function switchMode() {
+    let dateCont = document.querySelector('.date-container');
+    if (ddList.value === "range")
+        dateCont.classList.remove('hidden');
+    else
+        dateCont.classList.add('hidden');
+    fetchData();
+}
+
 // data actions
 function printErr(err) {
     cout("err!");
@@ -182,9 +200,25 @@ function clearFields() {
 function fetchData() {
     clearFields();
     cout("fetching data...");
-    let param = parMap[ddList.value];
+
     let token = localStorage.getItem("token");
-    makeGet("meters/?" + param, fillTable, printErr, token);
+
+    if (ddList.value === "range") {
+        cout("Sending request for range...");
+        let date1 = new Date(fromDate.value);
+        let date2 = new Date(toDate.value);
+        cout(date1.toISOString());
+        cout(date2.toISOString());
+        if (date2 >= date1)
+            cout("ok!");
+        else
+            cout("error!");
+        // makeGet("meters/?" + param, fillTable, printErr, token);
+    } else {
+        cout("Sending request for particular...");
+        let param = parMap[ddList.value];        
+        makeGet("meters/?" + param, fillTable, printErr, token);
+    }
 }
 function markOk(element) {
     element.style.background = "lightgreen";

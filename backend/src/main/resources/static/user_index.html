@@ -63,7 +63,14 @@
                         <option value="month">Этот месяц</option>
                         <option value="year">Этот год</option>
                         <option value="all" selected>Весь период</option>
+                        <option value="range">Диапазон</option>
                     </select>
+                    <br>
+                    <div class="date-container hidden">
+                        <input type="date" class="date from-date" value="2018-01-01" min="2000-01-01" max="2030-12-31">
+                        <span>&#8594;</span>
+                        <input type="date" class="date to-date" value="2019-01-01" min="2000-01-01" max="2030-12-31">
+                    </div>
                 </td>
             </tr>
             <tr class="reading header">
