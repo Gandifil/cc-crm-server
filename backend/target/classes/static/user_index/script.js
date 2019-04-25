@@ -153,7 +153,7 @@ function fillTable(response) {
         let elAmount = entry.electricity;
         let coldAmount = entry.coldWater;
         let hotAmount = entry.hotWater;
-        let date = entry.date;
+        let date = entry.date.substring(0, 19).replace("T", "<br>");
         histTable.appendChild(makeRow([elAmount, coldAmount, hotAmount, date]));
     }
 }

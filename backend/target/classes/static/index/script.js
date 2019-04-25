@@ -43,6 +43,9 @@ var signInSwitch;
 var signUpBtn;
 var signInBtn;
 
+var siUsername;
+var siPassword;
+
 var suUsername;
 var suPassword;
 var suEmail;
@@ -65,6 +68,9 @@ function initialize() {
 
     signUpBtn = document.querySelector('.sign-up-btn');
     signInBtn = document.querySelector('.sign-in-btn');
+
+    siUsername = document.querySelector('.sign-in-form .username');
+    siPassword = document.querySelector('.sign-in-form .password');
 
     suUsername = document.querySelector('.sign-up-form .username');
     suPassword = document.querySelector('.sign-up-form .password');
@@ -91,7 +97,7 @@ function tryToSignIn() {
     if (localStorage.hasOwnProperty("token")) {
         cout("Found token!");
         let token = localStorage.getItem("token");
-        makeGet("profile", openAccount, printError, token)
+        makeGet("profile", openAccount, printErrProf, token);
     }
     else
         cout("Token was not found!");
@@ -145,7 +151,6 @@ function checkFieldNotContainsAny(field, subs, succHandler, errHandler) {
     succHandler(field);
     return true;
 }
-cout("rele");
 function checkFields() {
     cout("Checking fields...");
     let results = [ checkField(suUsername, 4, 24, markOk, markNot),
@@ -154,16 +159,21 @@ function checkFields() {
                     checkField(suLastName, 3, 50, markOk, markNot),
                     checkField(suFirstName, 3, 50, markOk, markNot),
                     checkField(suMiddleName, 3, 50, markOk, markNot),
-                    checkField(suApNum, 1, 5, markOk, markNot) && checkFieldNotContainsAny(suApNum, [ '+', '-' ], markOk, markNot),
-                    checkField(suPhoneNum, 6, 11, markOk, markNot) && checkFieldNotContainsAny(suPhoneNum, [ '+', '-' ], markOk, markNot) ];
+                    checkField(suApNum, 1, 5, markOk, markNot) && checkFieldNotContainsAny(suApNum, [ '+', '-', 'e' ], markOk, markNot),
+                    checkField(suPhoneNum, 6, 11, markOk, markNot) && checkFieldNotContainsAny(suPhoneNum, [ '+', '-', 'e' ], markOk, markNot) ];
     for (let result of results)
         if (!result)
             return false;
     return true;
 }
-function printError(message) {
-    cout("error:");
-    cout(message);
+function markSUCreds(error) {
+    cout("Sign up error response status:");
+    cout(error.response.status);
+    if (error.response.status === 422) {
+        markNot(suUsername);
+        if (suApNum.value == 0)
+            markNot(suApNum);
+    }
 }
 function signUp() {
     if (!checkFields()) {
@@ -187,7 +197,7 @@ function signUp() {
 
     cout(user);
 
-    makePost("auth/register", user, signIn, printError);
+    makePost("auth/register", user, signIn, markSUCreds);
 }
 
 // signing in
@@ -205,11 +215,26 @@ function openAccount(response) {
     else
         cout("Unknown role: " + role);
 }
+function printErrProf(error) {
+    cout("Profile loading failure!");
+    cout("Error response status:");
+    cout(error.response.status);
+}
 function fetchProfile(response) {
+    markOk(siUsername);
+    markOk(siPassword)
     let token = response.data.token;
     localStorage.setItem("token", token);
     cout("Token was saved!");
-    makeGet("profile", openAccount, printError, token)
+    makeGet("profile", openAccount, printErrProf, token)
+}
+function markSICreds(error) {
+    cout("Sign in error response status:");
+    cout(error.response.status);
+    if (error.response.status === 401) {
+        markNot(siUsername);
+        markNot(siPassword);
+    }
 }
 function signIn() {
     cout("signing in...");
@@ -227,5 +252,5 @@ function signIn() {
     
     cout(user)
 
-    makePost("auth/login", user, fetchProfile, printError)
+    makePost("auth/login", user, fetchProfile, markSICreds)
 }

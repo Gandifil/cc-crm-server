@@ -82,7 +82,6 @@ function initialize() {
     checkAdminToken();
 }
 
-
 // check
 function checkAdminToken() {
     if (localStorage.hasOwnProperty("token")
@@ -155,7 +154,6 @@ function makeRow(values, classes) {
     }
     return row;
 }
-cout("wow!");
 function fillApartTable(aparts) {
     cout("Filling apart table...");
     cout(aparts);
@@ -171,7 +169,7 @@ function fillApartTable(aparts) {
                 let elAmount = entry.electricity;
                 let coldAmount = entry.coldWater;
                 let hotAmount = entry.hotWater;
-                let date = entry.date;
+                let date = entry.date.substring(0, 19).replace("T", "<br>");
                 apartTable.appendChild(makeRow([ elAmount, coldAmount, hotAmount, date ], [ 'reading' ]));
             }
     }
@@ -187,8 +185,10 @@ function selectApart() {
         cout(apart);
         fillApartTable(apart);
     }
-    else
+    else {
         cout("No such apart!");
+        fillApartTable({});
+    }
 }
 function saveAparts(response) {
     cout("Saving apart data...");

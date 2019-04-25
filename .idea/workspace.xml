@@ -4,8 +4,12 @@
     <list default="true" id="9da519fe-55ea-4c0f-95cd-dc7ca5f9fbd0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/admin_index/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/static/admin_index/script.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/index/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/static/index/script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/index/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/static/index/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/user_index/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/static/user_index/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/static/admin_index/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/static/admin_index/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/static/index/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/static/index/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/static/user_index/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/static/user_index/script.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/backend/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -35,7 +39,7 @@
           <entry key="css" value="1" />
           <entry key="java" value="489" />
           <entry key="js" value="1" />
-          <entry key="properties" value="23" />
+          <entry key="properties" value="32" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -43,7 +47,7 @@
           <entry key="CSS" value="1" />
           <entry key="JAVA" value="489" />
           <entry key="JavaScript" value="1" />
-          <entry key="Properties" value="23" />
+          <entry key="Properties" value="32" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -81,8 +85,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/backend/src/main/resources/application.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+            <state relative-caret-position="88">
+              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
             </state>
           </provider>
         </entry>
@@ -342,7 +346,7 @@
       <workItem from="1555905098837" duration="32194000" />
       <workItem from="1555988163483" duration="3672000" />
       <workItem from="1556072608915" duration="38876000" />
-      <workItem from="1556156834128" duration="17045000" />
+      <workItem from="1556156834128" duration="22389000" />
     </task>
     <task id="LOCAL-00001" summary="added period type enum">
       <created>1553630548393</created>
@@ -368,10 +372,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="69541000" />
+    <option name="totallyTimeSpent" value="74885000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="27" width="1920" height="1053" extended-state="7" />
+    <frame x="0" y="27" width="1920" height="1053" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23504274" />
@@ -385,12 +389,12 @@
       <window_info id="Learn" order="8" weight="0.32959402" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32930845" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49946696" visible="true" weight="0.3677278" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" weight="0.3677278" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.388584" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32936078" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.442371" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.442371" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50053304" side_tool="true" weight="0.32936078" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32936078" />
       <window_info anchor="bottom" id="Spring" order="10" weight="0.32936078" />
@@ -660,8 +664,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/backend/src/main/resources/application.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+        <state relative-caret-position="88">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
         </state>
       </provider>
     </entry>
