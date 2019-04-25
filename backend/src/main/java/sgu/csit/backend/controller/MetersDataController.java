@@ -14,6 +14,7 @@ import sgu.csit.backend.dto.UserDTO;
 import sgu.csit.backend.model.MetersData;
 import sgu.csit.backend.model.PeriodType;
 import sgu.csit.backend.model.User;
+import sgu.csit.backend.response.MetersDataSendResponse;
 import sgu.csit.backend.security.JwtUser;
 import sgu.csit.backend.service.MetersDataService;
 import sgu.csit.backend.service.UserService;
@@ -50,14 +51,14 @@ public class MetersDataController {
 
     //@CrossOrigin(origins = "**", maxAge = 3600)
     @RequestMapping(value = "/send", method = RequestMethod.POST)
-    public ResponseEntity sendMetersData(
+    public MetersDataSendResponse sendMetersData(
             @AuthenticationPrincipal JwtUser jwtUser,
             @RequestBody MetersData metersData
     ) {
         metersData.setDate(new Date());
         metersData.setUser(userService.getUserById(jwtUser.getId()));
-        metersDataService.addMetersData(metersData);
-        return ResponseEntity.ok("Meters data have been sent successfully!");
+        MetersDataSendResponse response = metersDataService.addMetersData(metersData);
+        return response;
     }
 
     // meters

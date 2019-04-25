@@ -77,4 +77,9 @@ public class MetersData {
     public void setUser(User user) {
         this.user = user;
     }
+
+    @Override
+    public String toString() {
+        return "[" + electricity + ", " + coldWater + ", " + hotWater + ", " + date + "]";
+    }
 }
