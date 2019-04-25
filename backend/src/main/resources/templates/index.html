@@ -13,22 +13,38 @@
     <div class="login-page">
         <div class="form">
           <form class="sign-up-form hidden">
-            <input type="text" placeholder="Логин" class="username"/>
-            <input type="password" placeholder="Пароль" class="password"/>
-            <input type="text" placeholder="Эл. почта" class="email"/>
-            <input type="text" placeholder="Фамилия" class="lastName"/>
-            <input type="text" placeholder="Имя" class="firstName"/>
-            <input type="text" placeholder="Отчество" class="middleName"/>
-            <input type="text" placeholder="Номер квартиры" class="apartment"/>
-            <input type="text" placeholder="Номер телефона" class="phoneNumber"/>
+            <span class="tooltip-wrapper">
+              <input type="text" placeholder="Логин" class="username"/><span class="tooltip for-username">От 4 до 24 символов</span>
+            </span>
+            <span class="tooltip-wrapper">
+              <input type="password" placeholder="Пароль" class="password"/><span class="tooltip">От 6 до 32 символов</span>
+            </span>
+            <span class="tooltip-wrapper">
+              <input type="text" placeholder="Эл. почта" class="email"/><span class="tooltip">От 5 до 50 символов</span>
+            </span>
+            <span class="tooltip-wrapper">
+              <input type="text" placeholder="Фамилия" class="lastName"/><span class="tooltip">От 3 до 50 символов</span>
+            </span>
+            <span class="tooltip-wrapper">
+              <input type="text" placeholder="Имя" class="firstName"/><span class="tooltip">От 3 до 50 символов</span>
+            </span>
+            <span class="tooltip-wrapper">
+              <input type="text" placeholder="Отчество" class="middleName"/><span class="tooltip">От 3 до 50 символов</span>
+            </span>
+            <span class="tooltip-wrapper">
+              <input type="text" placeholder="Номер квартиры" class="apartment"/><span class="tooltip">Номер вашей квартиры</span>
+            </span>
+            <span class="tooltip-wrapper">
+              <input type="text" placeholder="Номер телефона" class="phoneNumber"/><span class="tooltip">От 6 до 12 символов</span>
+            </span>
             <button type="button" class="sign-up-btn">Регистрация</button>
-            <p class="message">Уже зарегистрированы? <span class="sign-in-switch" href="#">Войти</span></p>
+            <p class="message">Уже зарегистрированы? <span class="sign-in-switch">Войти</span></p>
           </form>
           <form class="sign-in-form">
             <input type="text" placeholder="Логин" class="username"/>
             <input type="password" placeholder="Пароль" class="password"/>
             <button type="button" class="sign-in-btn">Войти</button>
-            <p class="message">Не зарегистрированы? <span class="sign-up-switch" href="#">Регистрация</span></p>
+            <p class="message">Не зарегистрированы? <span class="sign-up-switch">Регистрация</span></p>
           </form>
         </div>
       </div>

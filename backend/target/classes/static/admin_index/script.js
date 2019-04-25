@@ -55,7 +55,6 @@ var apartData;
 
 // events
 document.addEventListener("DOMContentLoaded", initialize);
-
 function initialize() {
     // elements
     exitBtn = document.querySelector('.exit-btn');
@@ -67,7 +66,7 @@ function initialize() {
 
     apartDDList = document.querySelector('.table.apart .select-td');
     debtDDList = document.querySelector('.table.debt .select-td');
-    apNumField = document.querySelector('.apartNumber');
+    apNumField = document.querySelector('.apart-number');
 
     // events
     exitBtn.addEventListener('click', exit);
@@ -128,21 +127,27 @@ function removeElements(selector) {
     for (let element of elements)
         element.remove();
 }
-function makeTitleRow(value, count) {
+function makeSpanRow(value, classes, count) {
     let row = document.createElement('tr');
+
     row.classList.add('removable');
+    for (let c of classes)
+        row.classList.add(c);
 
     let cell = document.createElement('td');
     cell.innerHTML = value;
     cell.setAttribute("colspan", count);
-
     row.appendChild(cell);
 
     return row;
 }
-function makeRow(values) {
+function makeRow(values, classes) {
     let row = document.createElement('tr');
+
     row.classList.add('removable');
+    for (let c of classes)
+        row.classList.add(c);
+
     for (let value of values) {
         let cell = document.createElement('td');
         cell.innerHTML = value;
@@ -150,6 +155,7 @@ function makeRow(values) {
     }
     return row;
 }
+cout("wow!");
 function fillApartTable(aparts) {
     cout("Filling apart table...");
     cout(aparts);
@@ -157,16 +163,16 @@ function fillApartTable(aparts) {
     removeElements(".table.apart .removable");
 
     for (let n in aparts) {
-        apartTable.appendChild(makeTitleRow(n, 4));
+        apartTable.appendChild(makeSpanRow(n, [ 'ap-num' ], 4));
         if (aparts[n].length == 0)
-            apartTable.appendChild(makeTitleRow("<нет показаний>", 4));
+            apartTable.appendChild(makeSpanRow("<нет показаний>", [ 'reading', 'empty' ], 4));
         else
             for (let entry of aparts[n]) {
                 let elAmount = entry.electricity;
                 let coldAmount = entry.coldWater;
                 let hotAmount = entry.hotWater;
                 let date = entry.date;
-                apartTable.appendChild(makeRow([elAmount, coldAmount, hotAmount, date]));
+                apartTable.appendChild(makeRow([ elAmount, coldAmount, hotAmount, date ], [ 'reading' ]));
             }
     }
 }
@@ -197,14 +203,14 @@ function fillDebtTable(response) {
     removeElements(".table.debt .removable");
 
     for (let n in aparts) {
-        debtTable.appendChild(makeTitleRow(n, 5));
+        debtTable.appendChild(makeSpanRow(n, [ 'ap-num' ], 5));
         for (let user of aparts[n]) {
             let lastName = user.lastName;
             let firstName = user.firstName;
             let middleName = user.middleName;
             let email = user.email;
             let phoneNumber = user.phoneNumber;
-            debtTable.appendChild(makeRow([lastName, firstName, middleName, email, phoneNumber]));
+            debtTable.appendChild(makeRow([lastName, firstName, middleName, email, phoneNumber], [ 'users' ]));
         }
     }
 }

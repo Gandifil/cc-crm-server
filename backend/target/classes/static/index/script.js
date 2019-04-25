@@ -97,6 +97,9 @@ function printError(message) {
     cout(message);
 }
 function signUp() {
+    /*cout("switching vis...");
+    document.querySelector('.tooltip.for-username').style.color = "red";
+    document.querySelector('.tooltip.for-username').style.visibility = "visible";*/
     cout("signing up...");
 
     let user = {
@@ -112,7 +115,7 @@ function signUp() {
 
     cout(user);
 
-    makePost("auth/register", user, signIn, printError)
+    makePost("auth/register", user, signIn, printError);
 }
 
 // signing in
