@@ -143,6 +143,11 @@
                     </execution>
                 </executions>
             </plugin>
+            <!-- Surefire plugin is responsible for running tests
+    as part of project build -->
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+            </plugin>
         </plugins>
     </build>
 </project>
