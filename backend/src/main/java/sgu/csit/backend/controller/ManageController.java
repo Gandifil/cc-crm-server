@@ -3,6 +3,7 @@ package sgu.csit.backend.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -14,6 +15,7 @@ import sgu.csit.backend.model.PeriodType;
 import sgu.csit.backend.service.MetersDataService;
 import sgu.csit.backend.service.UserService;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -52,17 +54,41 @@ public class ManageController {
         return ResponseEntity.ok(metersData);
     }
 
-    // all apartments with meters
+    // all apartments with meters by standard period
     @RequestMapping(value = "/aparts/", method = RequestMethod.GET)
     public ResponseEntity getAllApartments(@RequestParam("periodType") PeriodType periodType) {
         Map<Integer, List<MetersDataDTO>> apartments = userService.getAllApartments(periodType);
         return ResponseEntity.ok(apartments);
     }
+    // all apartments with meters by range period
+    @RequestMapping(value = "/aparts/range", method = RequestMethod.GET)
+    public ResponseEntity getAllApartmentsByRange(
+            @RequestParam("fromDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date fromDate,
+            @RequestParam("toDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date toDate
+    ) {
+        System.out.println("Looking up for aparts by range...");
+        System.out.println("From date: " + fromDate);
+        System.out.println("To date: " + toDate);
+        Map<Integer, List<MetersDataDTO>> apartments = userService.getAllApartmentsByRange(fromDate, toDate);
+        return ResponseEntity.ok(apartments);
+    }
 
-    // bad apartments with users
+    // bad apartments with users by standard period
     @RequestMapping(value = "/bad_aparts/", method = RequestMethod.GET)
     public ResponseEntity getBadApartments(@RequestParam("periodType") PeriodType periodType) {
         Map<Integer, List<UserDTO>> badApartments = userService.getBadApartments(periodType);
+        return ResponseEntity.ok(badApartments);
+    }
+    // bad apartments with users by range period
+    @RequestMapping(value = "/bad_aparts/range", method = RequestMethod.GET)
+    public ResponseEntity getBadApartmentsByRange(
+            @RequestParam("fromDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date fromDate,
+            @RequestParam("toDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date toDate
+    ) {
+        System.out.println("Looking up for bad aparts by range...");
+        System.out.println("From date: " + fromDate);
+        System.out.println("To date: " + toDate);
+        Map<Integer, List<UserDTO>> badApartments = userService.getBadApartmentsByRange(fromDate, toDate);
         return ResponseEntity.ok(badApartments);
     }
 

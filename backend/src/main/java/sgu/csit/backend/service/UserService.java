@@ -142,6 +142,26 @@ public class UserService {
         return apartments;
     }
 
+    public Map<Integer, List<MetersDataDTO>> getAllApartmentsByRange(Date fromDate, Date toDate) {
+        Map<Integer, List<MetersDataDTO>> apartments = new HashMap<>();
+        for (User user : userRepository.findAll()) {
+            Integer apartment = user.getApartment();
+            if (apartment == 0)
+                continue;
+            List<MetersData> metersData = user.getMetersData()
+                                                .stream()
+                                                .filter(md -> md.getDate().after(fromDate)
+                                                                && md.getDate().before(toDate))
+                                                .collect(Collectors.toList());
+            if (apartments.containsKey(apartment))
+                apartments.get(apartment).addAll(MetersDataDTO.toDTO(metersData));
+            else
+                apartments.put(apartment, MetersDataDTO.toDTO(metersData));
+        }
+
+        return apartments;
+    }
+
     private boolean notActual(List<MetersDataDTO> metersData, Date date) {
         for (MetersDataDTO md : metersData)
             if (md.getDate().after(date))
@@ -155,6 +175,18 @@ public class UserService {
         Map<Integer, List<MetersDataDTO>> apartments = getAllApartments(PeriodType.ALL);
         for (Integer apartment : apartments.keySet())
             if (notActual(apartments.get(apartment), calendar.getTime()) && apartment != 0) {
+                List<User> badUsers = userRepository.findAllByApartment(apartment);
+                badApartments.put(apartment, UserDTO.toDTO(badUsers));
+            }
+
+        return badApartments;
+    }
+
+    public Map<Integer, List<UserDTO>> getBadApartmentsByRange(Date fromDate, Date toDate) {
+        Map<Integer, List<UserDTO>> badApartments = new HashMap<>();
+        Map<Integer, List<MetersDataDTO>> apartments = getAllApartmentsByRange(fromDate, toDate);
+        for (Integer apartment : apartments.keySet())
+            if (apartments.get(apartment).isEmpty() && apartment != 0) {
                 List<User> badUsers = userRepository.findAllByApartment(apartment);
                 badApartments.put(apartment, UserDTO.toDTO(badUsers));
             }
