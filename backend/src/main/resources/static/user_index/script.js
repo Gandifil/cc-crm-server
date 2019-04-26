@@ -197,6 +197,9 @@ function clearFields() {
     cold.style.background = "white";
     hot.style.background = "white";
 }
+function markDef(element) {
+    element.style.background = "white";
+}
 function fetchData() {
     clearFields();
     cout("fetching data...");
@@ -207,12 +210,16 @@ function fetchData() {
         cout("Sending request for range...");
         let date1 = new Date(fromDate.value);
         let date2 = new Date(toDate.value);
-        cout(date1.toISOString());
-        cout(date2.toISOString());
-        if (date2 >= date1)
-            cout("ok!");
-        else
-            cout("error!");
+        cout(date1);
+        cout(date2);
+        if (date2 >= date1) {
+            markDef(fromDate);
+            markDef(toDate);
+        }
+        else {
+            markNot(fromDate);
+            markNot(toDate);
+        }
         // makeGet("meters/?" + param, fillTable, printErr, token);
     } else {
         cout("Sending request for particular...");
@@ -247,9 +254,9 @@ function checkFieldNotContainsAny(field, subs, succHandler, errHandler) {
 }
 function checkFields() {
     cout("Checking fields...");
-    let results = [ checkField(electro, 1, 10, markOk, markNot) && checkFieldNotContainsAny(electro, [ '+', '-', 'e' ], markOk, markNot),
-                    checkField(cold, 1, 10, markOk, markNot) && checkFieldNotContainsAny(cold, [ '+', '-', 'e' ], markOk, markNot),
-                    checkField(hot, 1, 10, markOk, markNot) && checkFieldNotContainsAny(hot, [ '+', '-', 'e' ], markOk, markNot) ];
+    let results = [ checkField(electro, 1, 8, markOk, markNot) && checkFieldNotContainsAny(electro, [ '+', '-', 'e' ], markOk, markNot),
+                    checkField(cold, 1, 8, markOk, markNot) && checkFieldNotContainsAny(cold, [ '+', '-', 'e' ], markOk, markNot),
+                    checkField(hot, 1, 8, markOk, markNot) && checkFieldNotContainsAny(hot, [ '+', '-', 'e' ], markOk, markNot) ];
     for (let result of results)
         if (!result)
             return false;
