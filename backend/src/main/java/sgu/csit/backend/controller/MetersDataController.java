@@ -3,6 +3,7 @@ package sgu.csit.backend.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -61,7 +62,7 @@ public class MetersDataController {
         return response;
     }
 
-    // meters
+    // meters by standard period
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ResponseEntity getAllMetersData(
             @AuthenticationPrincipal JwtUser user,
@@ -69,6 +70,19 @@ public class MetersDataController {
     ) {
         List<MetersDataDTO> metersData =
             metersDataService.getApartment(user.getApartment(), periodType);
+        return ResponseEntity.ok(metersData);
+    }
+
+    // meters by range period
+    @RequestMapping(value = "/range", method = RequestMethod.GET)
+    public ResponseEntity getMetersDataByRange(
+            @AuthenticationPrincipal JwtUser user,
+            @RequestParam("fromDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date fromDate,
+            @RequestParam("toDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date toDate
+    ) {
+        System.out.println("From date: " + fromDate);
+        System.out.println("To date: " + toDate);
+        List<MetersDataDTO> metersData = metersDataService.getApartmentByRange(user.getApartment(), fromDate, toDate);
         return ResponseEntity.ok(metersData);
     }
 }

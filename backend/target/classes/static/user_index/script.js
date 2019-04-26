@@ -215,12 +215,14 @@ function fetchData() {
         if (date2 >= date1) {
             markDef(fromDate);
             markDef(toDate);
+            makeGet("meters/range?fromDate=" + date1.toISOString()
+                        + "&toDate=" + date2.toISOString(),
+                        fillTable, printErr, token);
         }
         else {
             markNot(fromDate);
             markNot(toDate);
         }
-        // makeGet("meters/?" + param, fillTable, printErr, token);
     } else {
         cout("Sending request for particular...");
         let param = parMap[ddList.value];        

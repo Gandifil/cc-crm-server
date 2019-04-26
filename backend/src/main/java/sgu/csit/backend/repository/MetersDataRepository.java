@@ -12,4 +12,5 @@ import java.util.Set;
 public interface MetersDataRepository extends JpaRepository<MetersData, Long> {
     List<MetersData> findByUser_Apartment(Integer userApart);
     List<MetersData> findByDateAfterAndUser_Apartment(Date date, Integer userApart);
+    List<MetersData> findByUser_ApartmentAndDateAfterAndDateBefore(Integer apart, Date fromDate, Date toDate);
 }

@@ -10,6 +10,7 @@ import sgu.csit.backend.repository.MetersDataRepository;
 import sgu.csit.backend.response.MetersDataSendResponse;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -94,6 +95,12 @@ public class MetersDataService {
             default:
                 return null;
         }
+        return metersData;
+    }
+
+    public List<MetersDataDTO> getApartmentByRange(Integer apartment, Date fromDate, Date toDate) {
+        List<MetersDataDTO> metersData = MetersDataDTO.toDTO(metersDataRepository
+                                                                .findByUser_ApartmentAndDateAfterAndDateBefore(apartment, fromDate, toDate));
         return metersData;
     }
 }
