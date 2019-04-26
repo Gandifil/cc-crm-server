@@ -54,6 +54,11 @@ var apartDDList;
 var debtDDList;
 var apNumField;
 
+var apartFromDate;
+var apartToDate;
+var debtFromDate;
+var debtToDate;
+
 // global
 var apartData;
 
@@ -76,15 +81,25 @@ function initialize() {
     debtDDList = document.querySelector('.table.debt .select-td');
     apNumField = document.querySelector('.apart-number');
 
+    apartFromDate = document.querySelector('.table.apart .from-date');
+    apartToDate = document.querySelector('.table.apart .to-date');
+    debtFromDate = document.querySelector('.table.debt .from-date');
+    debtToDate = document.querySelector('.table.debt .to-date');
+
     // events
     exitBtn.addEventListener('click', exit);
 
     debtSwitcher.addEventListener('click', switchToDebt);
     apartSwitcher.addEventListener('click', switchToApart);
 
-    apartDDList.addEventListener('change', fetchData);
-    debtDDList.addEventListener('change', fetchData);
+    apartDDList.addEventListener('change', switchApartMode);
+    debtDDList.addEventListener('change', switchDebtMode);
     apNumField.addEventListener('change', selectApart);
+
+    apartFromDate.addEventListener('change', fetchData);
+    apartToDate.addEventListener('change', fetchData);
+    debtFromDate.addEventListener('change', fetchData);
+    debtToDate.addEventListener('change', fetchData);
 
     // next
     checkAdminToken();
@@ -130,6 +145,25 @@ function switchToApart() {
     debtTable.classList.add('hidden');
     apartTable.classList.remove('hidden');
     cout("switched to apart!");
+}
+
+function switchApartMode() {
+    cout("Switching apart mode...");
+    let dateCont = document.querySelector('.table.apart .date-container');
+    if (apartDDList.value === "range")
+        dateCont.classList.remove('hidden');
+    else
+        dateCont.classList.add('hidden');
+    fetchData();
+}
+function switchDebtMode() {
+    cout("Switching debt mode...");
+    let dateCont = document.querySelector('.table.debt .date-container');
+    if (debtDDList.value === "range")
+        dateCont.classList.remove('hidden');
+    else
+        dateCont.classList.add('hidden');
+    fetchData();
 }
 
 // data actions
@@ -230,15 +264,62 @@ function fillDebtTable(response) {
         }
     }
 }
+function markDef(element) {
+    element.style.background = "white";
+}
+function markNot(element) {
+    element.style.background = "lightpink";
+}
 function fetchData() {
     cout("fetching data...");
     
-    // apart table
-    let param = parMap[apartDDList.value];
     let token = localStorage.getItem("token");
-    makeGet("manage/aparts/?" + param, saveAparts, printErr, token);
+
+    // apart table
+    if (apartDDList.value === "range") {
+        cout("Sending apart request for range...");
+        let date1 = new Date(apartFromDate.value);
+        let date2 = new Date(apartToDate.value);
+        cout(date1);
+        cout(date2);
+        if (date2 >= date1) {
+            markDef(apartFromDate);
+            markDef(apartToDate);
+            makeGet("manage/aparts/range?fromDate=" + date1.toISOString()
+                        + "&toDate=" + date2.toISOString(),
+                        saveAparts, printErr, token);
+        }
+        else {
+            markNot(apartFromDate);
+            markNot(apartToDate);
+        }
+    } else {
+        cout("Sending apart request for particular...");
+        let param = parMap[apartDDList.value];
+        makeGet("manage/aparts/?" + param, saveAparts, printErr, token);
+    }
 
     // debt table
-    param = parMap[debtDDList.value];
-    makeGet("manage/bad_aparts/?" + param, fillDebtTable, printErr, token);
+    if (debtDDList.value === "range") {
+        cout("Sending debt request for range...");
+        let date1 = new Date(debtFromDate.value);
+        let date2 = new Date(debtToDate.value);
+        cout(date1);
+        cout(date2);
+        if (date2 >= date1) {
+            markDef(debtFromDate);
+            markDef(debtToDate);
+            makeGet("manage/bad_aparts/range?fromDate=" + date1.toISOString()
+                        + "&toDate=" + date2.toISOString(),
+                        fillDebtTable, printErr, token);
+        }
+        else {
+            markNot(debtFromDate);
+            markNot(debtToDate);
+        }
+    } else {
+        cout("Sending debt request for particular...");
+        param = parMap[debtDDList.value];
+        makeGet("manage/bad_aparts/?" + param, fillDebtTable, printErr, token);
+    }
 }

@@ -107,6 +107,10 @@ body {
     background: #43A047;
 }
 
+.date {
+    margin-top: 5px;
+}
+
 /* profile */
 .profile-table {
     margin-top: 20px;

@@ -148,6 +148,7 @@ function switchToSend() {
 }
 
 function switchMode() {
+    cout("Switching mode...")
     let dateCont = document.querySelector('.date-container');
     if (ddList.value === "range")
         dateCont.classList.remove('hidden');
